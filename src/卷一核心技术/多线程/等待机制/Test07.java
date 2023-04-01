@@ -14,6 +14,10 @@ public class Test07 {
                         System.out.println("end wait....");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
-                    }}}});
+                    }
+                }
+            }
+        });
         t.start();
-    }}
+    }
+}

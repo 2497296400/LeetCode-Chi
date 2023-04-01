@@ -50,9 +50,12 @@ public class Test06 {
                 e.printStackTrace();
             } finally {
                 if (lock1.isHeldByCurrentThread())//判断当前线程是否持有该锁
+                {
                     lock1.unlock();
-                if (lock2.isHeldByCurrentThread())
+                }
+                if (lock2.isHeldByCurrentThread()) {
                     lock2.unlock();
+                }
                 System.out.println(Thread.currentThread().getName() + "线程退出");
             }
         }

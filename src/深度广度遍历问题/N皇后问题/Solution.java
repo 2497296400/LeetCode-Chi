@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Solution {
     public static void main(String[] args) {
-        solveNQueens2(14);
+        solveNQueens2(11);
     }
 
     public static List<List<String>> solveNQueens(int n) {

@@ -4,10 +4,10 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Test {
-        static PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
-        static StreamTokenizer in = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
+    static PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
+    static StreamTokenizer in = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
     public static void main(String[] args) throws IOException {
-
+        
         Scanner scan = new Scanner(System.in);
         int N = nextInt();
         int[] arr = new int[N];

@@ -16,15 +16,17 @@ public class Test03 {
                     TimeUnit.SECONDS.sleep(num);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                } } };
+                }
+            }
+        };
         //创建线程池, 自定义拒绝策略
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 5, 0, TimeUnit.SECONDS, new LinkedBlockingQueue<>(10), Executors.defaultThreadFactory(), new RejectedExecutionHandler(){
-            @Override
-            public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
-                //r就是请求的任务, executor就是当前线程池
-                System.out.println(r + " is discarding..");
-            } });
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 5, 0, TimeUnit.SECONDS, new LinkedBlockingQueue<>(10), Executors.defaultThreadFactory(), (r1, executor) -> {
+            //r就是请求的任务, executor就是当前线程池
+            System.out.println(r1 + " is discarding..");
+        });
         //向线程池提交若干任务
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
             threadPoolExecutor.submit(r);
-        } }}
+        }
+    }
+}

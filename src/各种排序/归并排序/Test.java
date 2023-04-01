@@ -40,5 +40,4 @@ public class Test {
             arr[cur + l] = temp[cur];
         }
     }
-
 }

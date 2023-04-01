@@ -27,7 +27,6 @@ public class Solution {
     }
 
     private boolean find(Tire tire, int i, char[] chars) {
-        boolean ans = false;
         if (i == chars.length) {
            return true;
         }

@@ -31,6 +31,7 @@ public class CoffeeFactory {
                 String className = p.getProperty((String) key);
                 //通过反射技术创建对象
                 Class clazz = Class.forName(className);
+                
                 Coffee coffee = (Coffee) clazz.newInstance();
                 //将名称和对象存储到容器中
                 map.put((String)key,coffee);

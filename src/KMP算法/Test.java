@@ -29,11 +29,10 @@ public class Test {
         }
         return fLen == f.length() ? sLen-fLen: -1;
     }
-
+    
     private int[] getNext(char[] fc) {
         int[] next = new int[fc.length];
         next[0] = -1;
-        next[1] = 0;
         int lasPre = 2;
         int curCnt = 0;
         while (lasPre < fc.length) {

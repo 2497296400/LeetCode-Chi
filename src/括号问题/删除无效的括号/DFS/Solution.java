@@ -1,6 +1,5 @@
 package 括号问题.删除无效的括号.DFS;
 
-import java.awt.image.WritableRaster;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,7 +23,8 @@ public class Solution {
                     lr--;
                 }else {
                 rr++;
-            }}
+                }
+            }
         }
         getAns(ans, lr, rr, s, 0);
 

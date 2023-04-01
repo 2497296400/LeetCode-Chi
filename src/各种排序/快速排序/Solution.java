@@ -29,7 +29,6 @@ public class Solution {
         qsotr(nums, left, curIndex[0]);
         qsotr(nums, curIndex[1], right);
     }
-
     private static int[] getIndex(int[] nums, int left, int right) {
         int curMin = left - 1;
         int curMax = right;
@@ -46,7 +45,6 @@ public class Solution {
         swap(nums, curMax, right);
         return new int[]{curMin, curMax};
     }
-
     private static void swap(int[] nums, int left, int r) {
         int temp = nums[left];
         nums[left] = nums[r];

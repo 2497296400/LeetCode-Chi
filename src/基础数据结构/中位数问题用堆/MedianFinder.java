@@ -1,4 +1,4 @@
-package 中位数问题用堆;
+package 基础数据结构.中位数问题用堆;
 
 import java.util.PriorityQueue;
 

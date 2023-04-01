@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Test {
     public static void main(String[] args) {
-        int[] arr = {5, 1, 4, 5, 3, 48, 9, 1, 6, 2, 3, 58, 74, 9, 6, 12, 69, 3, -1, -5};
+        int[] arr = {8,7,6,5,4,3,2,1};
         Sotr(arr, 2);
 //        for (int i = 0; i < 10; i++) {
 //            findTure();
@@ -29,11 +29,10 @@ public class Test {
     private static void quickSort(int[] arr, int left, int right) {
         if (left < right) {
             int[] position = getPrivot(arr, left, right);
-            quickSort(arr, left, position[0] - 1);
-            quickSort(arr, position[1] + 1, right);
+            quickSort(arr, left, position[0]);
+            quickSort(arr, position[1], right);
         }
     }
-
     private static int[] getPrivot(int[] arr, int left, int right) {
         int less = left - 1;
         int more = right;
@@ -48,7 +47,8 @@ public class Test {
             }
         }
         swap(arr, more, right);
-        return new int[]{less + 1, more};
+        System.out.println(Arrays.toString(arr));
+        return new int[]{less, more};
     }
     private static void Sotr(int[] arr, int index) {
         int left = 0;

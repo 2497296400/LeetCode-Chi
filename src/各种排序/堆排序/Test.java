@@ -35,7 +35,6 @@ public class Test {
             swap(large, curIndex, arr);
             curIndex = large;
             left = large * 2 + 1;
-
         }
     }
 

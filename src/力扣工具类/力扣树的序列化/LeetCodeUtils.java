@@ -1,6 +1,8 @@
 package 力扣工具类.力扣树的序列化;
 
 import 力扣工具类.树的节点.TreeNode;
+import 力扣工具类.树的输出.TreePrint;
+import 力扣工具类.链表节点.ListNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -36,5 +38,18 @@ public class LeetCodeUtils {
         } else {
             return new TreeNode(deque.poll());
         }
+    }
+    
+    public static ListNode getNode(int[] arr) {
+        ListNode node = new ListNode(arr[0]);
+        ListNode head = node;
+        for (int i = 1; i < arr.length; i++) {
+            node.next = new ListNode(arr[i]);
+            node = node.next;
+        }
+        return head;
+    }
+    public  static void treePrint(TreeNode root){
+        TreePrint.print(root);
     }
 }

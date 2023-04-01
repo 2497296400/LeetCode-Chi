@@ -46,8 +46,9 @@ public class Solution {
         }
         TreeNode node = new TreeNode(preorder[preLeft]);
         int rootIndex = hashMap.get(node.val);
-        node.left = buildTree(preorder, preLeft + 1, rootIndex - inLeft + preLeft, hashMap, inLeft, rootIndex - 1);
-        node.right = buildTree(preorder, rootIndex - inLeft + preLeft + 1, preRinght, hashMap, rootIndex + 1, inRight);
+        int leftSize = rootIndex - inLeft;
+        node.left = buildTree(preorder, preLeft + 1, leftSize + preLeft, hashMap, inLeft, rootIndex - 1);
+        node.right = buildTree(preorder, leftSize + preLeft + 1, preRinght, hashMap, rootIndex + 1, inRight);
         return  node;
     }
 }

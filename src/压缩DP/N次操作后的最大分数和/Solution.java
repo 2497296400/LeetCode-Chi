@@ -6,7 +6,7 @@ public class Solution {
         int[] arr = {1,2,3,4,5,6};
         System.out.println(solution.maxScore(arr));
     }
-
+    
     public static int gcd(int m, int n) {
         return m == 0 ? n : (gcd(n % m, m));
     }

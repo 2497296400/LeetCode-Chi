@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Solution {
 
     public static void main(String[] args) {
-        int[] arr = {11, 44, 23, 67, 88, 65, 34, 48, 9, 12};
+        int[] arr = {-1,-5,11, 44, 23, 67, 88, 65, 34, 48, 9, 12};
         Sort(arr);
         System.out.println(Arrays.toString(arr));
     }
