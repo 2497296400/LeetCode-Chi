@@ -1,5 +1,7 @@
 package 基础数据结构.埃式素数塞;
 
+import java.util.Arrays;
+
 public class Solution {
     public static void main(String[] args) {
         int n = 10;
@@ -20,23 +22,25 @@ public class Solution {
         for (int i = 2; i <= curIndex; i++) {
             System.out.println(pri[i]);
         }
+        test();
     }
 
-    private void t() {
+    private static  void test() {
         int n = 100;
-        int[] arr = new int[n];
+        boolean[] vis = new boolean[n + 1];
+        int[] isT = new int[n + 1];
         int curSum = 0;
-        boolean[] vis = new boolean[n];
         for (int i = 2; i <= n; i++) {
             if (!vis[i]) {
-                arr[++curSum] = i;
+                isT[++curSum] = i;
             }
-            for (int j = 1; j <= curSum && i * arr[j] <= n; j++) {
-                vis[i * arr[j]] = true;
-                if (i%arr[j]==0){
+            for (int j = 1; j <= curSum && isT[j] * i <= n; j++) {
+                vis[isT[j] * i] = true;
+                if(i%isT[j]==0){
                     break;
                 }
             }
         }
+        System.out.println(Arrays.toString(isT));
     }
 }

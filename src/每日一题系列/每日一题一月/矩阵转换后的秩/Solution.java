@@ -9,7 +9,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[][] arr = {{2,3,1},{9,4,5},{3,4,2}};
+        int[][] arr = {{2, 3, 1}, {9, 4, 5}, {3, 4, 2}};
         System.out.println(Arrays.deepToString(solution.matrixRankTransform(arr)));
     }
 
@@ -76,6 +76,7 @@ public class Solution {
                 rank[i] = 1;
             }
         }
+        
         while (!queue.isEmpty()) {
             int now = queue.poll();
             for (Integer curIndex : grid[now]) {
@@ -85,6 +86,7 @@ public class Solution {
                 }
             }
         }
+        
         for (int i = 0; i < value.length; i++) {
             for (int j = 0; j < value[0].length; j++) {
                 value[i][j] = rank[find(curIndex(i, j))];

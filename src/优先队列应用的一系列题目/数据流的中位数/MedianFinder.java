@@ -2,7 +2,7 @@ package 优先队列应用的一系列题目.数据流的中位数;
 
 import java.util.PriorityQueue;
 /*
-*  逆序对归并做法
+
 * */
 public class MedianFinder {
     PriorityQueue<Integer> right, left;

@@ -21,6 +21,7 @@ public class Solution {
             }
             stack.push(i);
         }
+        
         for (int i = 0; i < nums.length; i++) {
             while (nums[i] > nums[stack.peek()]) {
                 Integer cur = stack.pop();

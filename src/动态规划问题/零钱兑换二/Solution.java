@@ -1,15 +1,12 @@
 package 动态规划问题.零钱兑换二;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
 
 public class Solution {
     public static void main(String[] args) {
-        int[] nums = {1, 2, 5};
+        int[] nums = {2,3,1};
         int sum = 0;
-        System.out.println(change(5, nums));
+        System.out.println(change(6, nums));
     }
 
     public static int change(int amount, int[] coins) {

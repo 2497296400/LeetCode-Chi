@@ -2,8 +2,7 @@ package 动态规划问题.零钱兑换;
 
 public class Solution {
     public static void main(String[] args) {
-        int[] nums = {1, 2, 5};
-        System.out.println(minCoins1(nums, 11));
+        int[] nums = {2, 3, 1};
     }
 
     public static int minCoins1(int[] nums, int aim) {
@@ -11,7 +10,7 @@ public class Solution {
         if (nums.length == 0 || aim <= 0) {
             return -1;
         }
-        int sum = process(nums, aim, 0, dp,0);
+        int sum = process(nums, aim, 0, dp, 0);
         for (int i = 1; i <= aim; i++) {
             dp[nums.length][i] = -1;
         }
@@ -37,7 +36,8 @@ public class Solution {
         }
         return dp[0][aim];
     }
-    private static int process(int[] nums, int aim, int temp, int[][] dp,int strat) {
+
+    private static int process(int[] nums, int aim, int temp, int[][] dp, int strat) {
         if (aim == 0) {
             return 0;
         }
@@ -48,8 +48,8 @@ public class Solution {
             return dp[temp][aim];
         }
         int min = Integer.MAX_VALUE;
-        for (int i = strat; i < nums.length; i++) {
-            int res = process(nums, aim - nums[i], i, dp,i);
+        for (int i = 0; i < nums.length; i++) {
+            int res = process(nums, aim - nums[i], i, dp, i);
             if (res >= 0 && res < min) {
                 min = res + 1;
             }

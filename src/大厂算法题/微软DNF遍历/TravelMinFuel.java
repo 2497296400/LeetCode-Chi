@@ -1,7 +1,6 @@
 package 大厂算法题.微软DNF遍历;
 
 
-
 // 来自微软
 // 给定两个数组A和B，比如
 // A = { 0, 1, 1 }
@@ -24,6 +23,7 @@ import java.util.ArrayList;
 
 public class TravelMinFuel {
     public static int cnt = 0;
+
     public static int minFuel(int[] a, int[] b, int n) {
         // 先建图
         ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
@@ -41,22 +41,24 @@ public class TravelMinFuel {
         int[] size = new int[n + 1];
         int[] cost = new int[n + 1];
         cnt = 0;
-        dfs(graph, 0, dfn, size, cost);
+        dfs(graph, 0, -1, dfn, size, cost);
         return cost[0];
     }
 
-    public static void dfs(ArrayList<ArrayList<Integer>> graph, int cur, int[] dfn, int[] size, int[] cost) {
+    public static void dfs(ArrayList<ArrayList<Integer>> graph, int cur, int pre, int[] dfn, int[] size, int[] cost) {
         dfn[cur] = ++cnt;
         size[cur] = 1;
         for (int next : graph.get(cur)) {
-            if (dfn[next] == 0) {
-                dfs(graph, next, dfn, size, cost);
-                size[cur] += size[next];
-                cost[cur] += cost[next];
-                cost[cur] += (size[next] + 4) / 5;
+            if (next == pre) {
+                continue;
             }
+            dfs(graph, next, cur, dfn, size, cost);
+            size[cur] += size[next];
+            cost[cur] += cost[next];
+            cost[cur] += (size[next] + 4) / 5;
         }
     }
+
     public static void main(String[] args) {
         int[] a1 = {0, 1, 1};
         int[] b1 = {1, 2, 3};

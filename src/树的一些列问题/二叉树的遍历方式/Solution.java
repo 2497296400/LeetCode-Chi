@@ -13,7 +13,6 @@ public class Solution {
         solution.inOrder(treeNode);
         solution.posOrder(treeNode);
     }
-
     public void inOrder(TreeNode root) {
         System.out.println("InOrder ");
         Stack<TreeNode> stack = new Stack<>();

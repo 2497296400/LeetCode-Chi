@@ -1,18 +1,16 @@
 package 精选一百道题.返回数组中第K大的数;
 
 
-import java.util.Arrays;
-
 public class Solution {
     public static void main(String[] args) {
         int[] nums = {3,2,3,1,2,4,5,5,6};
         Solution solution = new Solution();
-        System.out.println(solution.findKthLargest(nums, 4));
+        System.out.println(solution.findKthLargest(nums, 3));
      //   System.out.println(Arrays.toString(nums));
     }
 
     public int findKthLargest(int[] nums, int k) {
-        return quickSort(nums, nums.length-k, 0, nums.length - 1);
+        return quickSort(nums, 2, 0, nums.length - 1);
     }
 
     private int quickSort(int[] nums, int key, int left, int right) {
@@ -45,7 +43,7 @@ public class Solution {
             }
         }
         swap(arr,curMax,right);
-        return new int[]{curMin + 1, curMax};
+        return new int[]{curMin +1, curMax};
     }
 
     private void swap(int[] arr, int left, int right) {
@@ -53,6 +51,4 @@ public class Solution {
         arr[left] = arr[right];
         arr[right] = temp;
     }
-
-
 }

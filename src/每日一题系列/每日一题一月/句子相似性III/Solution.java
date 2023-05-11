@@ -15,7 +15,7 @@ public class Solution {
         String[] f = sentence1.split(" ");
         String[] s = sentence2.split(" ");
         String[] cur;
-        if(f.length==s.length){
+        if (f.length == s.length) {
             return Arrays.equals(f, s);
         }
         if (f.length < s.length) {
@@ -25,14 +25,15 @@ public class Solution {
         }
         int fs = 0;
         int ss = 0;
-            while (fs<f.length&&ss<s.length&&f[fs].equals(s[ss])){
-                fs++;
-                ss++;}
-        fs = f.length-(s.length-ss);
-        while (fs<f.length&&ss<s.length&&f[fs].equals(s[ss])){
+        while (fs < f.length && ss < s.length && f[fs].equals(s[ss])) {
             fs++;
             ss++;
         }
-        return  fs==f.length&&ss==s.length;
+        fs = f.length - (s.length - ss);
+        while (fs < f.length && ss < s.length && f[fs].equals(s[ss])) {
+            fs++;
+            ss++;
+        }
+        return fs == f.length && ss == s.length;
     }
 }

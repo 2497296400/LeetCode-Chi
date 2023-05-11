@@ -11,6 +11,8 @@ public class Solution {
         char[] s = str2.toCharArray();
         String[][] dp = new String[f.length][s.length];
         String maxSuq = getMax(f, s, f.length - 1, s.length - 1, dp);
+        String cur = getMaxPro(str1, str2, f.length-1,s.length -1,  dp);
+        System.out.println(cur);
         char[] maxC = maxSuq.toCharArray();
         int l = 0;
         int r = 0;
@@ -52,5 +54,20 @@ public class Solution {
         String sStr = getMax(f, s, fLen, sLen - 1, dp);
         dp[fLen][sLen] = fStr.length() > sStr.length() ? fStr : sStr;
         return dp[fLen][sLen];
+    }
+
+    private String getMaxPro(String f, String s, int flen, int slen, String[][] dp) {
+        if (flen < 0) {
+            return s.substring(0, slen+1);
+        }
+        if (slen < 0) {
+            return f.substring(0, flen+1);
+        }
+        if (f.charAt(flen) == s.charAt(slen)) {
+            return getMaxPro(f, s, flen - 1, slen - 1, dp) + f.charAt(flen);
+        }
+        String fStr = getMaxPro(f, s, flen - 1, slen, dp) + f.charAt(flen);
+        String sStr = getMaxPro(f, s, flen, slen - 1, dp) + s.charAt(slen);
+        return fStr.length() < sStr.length() ? fStr : sStr;
     }
 }

@@ -83,11 +83,17 @@ public class ThreadPoolTrader implements Executor {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        ThreadPoolTrader trader = new ThreadPoolTrader(5, 10, new ArrayBlockingQueue<>(100));
-        ExecutorService service = new ThreadPoolExecutor(5, 10, 100, TimeUnit.SECONDS,new ArrayBlockingQueue<>(100));
-        for(int  i = 0;i<100;i++){
+        ThreadPoolTrader trader = new ThreadPoolTrader(5, 10, new ArrayBlockingQueue<>(10));
+        ExecutorService service = new ThreadPoolExecutor(5, 10, 100, TimeUnit.SECONDS, new ArrayBlockingQueue<>(10), new RejectedExecutionHandler() {
+            AtomicInteger atomicInteger = new AtomicInteger(0);
+            @Override
+            public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+                System.out.println(atomicInteger.getAndIncrement());
+            }
+        });
+        for(int  i = 0;i<=100;i++){
             final  int cur  = i;
-            service.execute(()->{
+            trader.execute(()->{
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {

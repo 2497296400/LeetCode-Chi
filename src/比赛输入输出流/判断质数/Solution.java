@@ -17,7 +17,7 @@ public class Solution {
         StreamTokenizer streamTokenizer = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
         PrintWriter printWriter = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
         HashMap<Long, Boolean> map = new HashMap<>();
-   
+
         int N = (int) nextInt();
         for (int i = 0; i < N; i++) {
             long anInt = nextInt();
@@ -39,15 +39,34 @@ public class Solution {
         }
         out.close();
     }
+
+    public StreamTokenizer streamTokenizer = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
+
     private static boolean isT(long nextInt) {
         if (nextInt <= 3) {
             return nextInt > 1;
         }
+        
         if (nextInt % 6 != 1 && nextInt % 6 != 5) {
             return false;
         }
-        for (int i = 5; i < Math.sqrt(nextInt); i += 6) {
+        for (int i = 5; i <= Math.sqrt(nextInt); i += 6) {
             if (nextInt % i == 0 || nextInt % (i + 2) == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean testisT(long target) {
+        if (target <= 3) {
+            return target > 1;
+        }
+        if (target % 6 != 1 && target % 6 != 5) {
+            return false;
+        }
+        for (int i = 5; (long) i * i <= target; i += 6) {
+            if (target % i == 0 || (target + 2) % i == 0) {
                 return false;
             }
         }

@@ -2,9 +2,10 @@ package 动态规划问题.最长有效括号;
 
 public class Solution {
     public static void main(String[] args) {
-        String s = "(()()";
-        System.out.println(longestValidParentheses(s));
+        String s = ")()())";
+
     }
+
     public static int longestValidParentheses(String s) {
         if (s == null) {
             return 0;

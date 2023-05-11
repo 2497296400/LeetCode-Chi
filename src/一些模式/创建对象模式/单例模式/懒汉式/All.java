@@ -2,13 +2,13 @@ package 一些模式.创建对象模式.单例模式.懒汉式;
 
 public class All {
     //线程不安全
-    static class singleton1 {
+     class singleton1 {
         private static singleton1 instace;
 
         public singleton1() {
         }
 
-        public static singleton1 getInstace() {
+        public  singleton1 getInstace() {
             if (instace == null) {
                 instace = new singleton1();
             }
@@ -17,13 +17,13 @@ public class All {
     }
 
         //线程安全
-    static class singleton2 {
+     class singleton2 {
         private static singleton2 instace;
 
         public singleton2() {
         }
 
-        public static synchronized singleton2 getInstace() {
+        public  synchronized singleton2 getInstace() {
             if (instace == null) {
                 instace = new singleton2();
             }
@@ -31,14 +31,14 @@ public class All {
         }
     }
     //双重检查
-    static class singleton3 {
+     class singleton3 {
         //防止指令重新排序 valatile
         private static volatile singleton3 instace;
 
         public singleton3() {
         }
 
-        public static singleton3 getInstace() {
+        public  singleton3 getInstace() {
             if (instace == null) {
                 synchronized (singleton3.class){
                     if(instace==null){
@@ -60,4 +60,5 @@ public class All {
             return  sinleton4Holder.instace;
         }
     }
+    
 }

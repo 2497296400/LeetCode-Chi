@@ -4,7 +4,7 @@ public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
         int[] arr = {3, 2, 4, 1};
-        System.out.println(solution.mergeStones(arr, 2));
+        System.out.println(solution.mergeStones(arr, 4));
     }
     public int mergeStones(int[] stones, int k) {
         int[][][] dp = new int[stones.length][stones.length][k + 1];
