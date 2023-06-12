@@ -15,7 +15,7 @@ public class Client {
         GroupLeader groupLeader = new GroupLeader();
         Manager manager = new Manager();
         GeneralManager generalManager = new GeneralManager();
-
+        
         //设置处理者链
         groupLeader.setNextHandler(manager);
         manager.setNextHandler(generalManager);

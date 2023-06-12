@@ -9,6 +9,8 @@ public class CompleteFutureTest {
             System.out.println(Thread.currentThread().getName());
             return 1;
         });
+        
+        System.out.println(future.get());
         CompletableFuture<Integer> apply = future.thenApplyAsync((a) -> {
             System.out.println(Thread.currentThread().getName());
             return a + 5;
