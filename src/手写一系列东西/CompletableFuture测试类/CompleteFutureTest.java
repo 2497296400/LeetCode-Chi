@@ -1,7 +1,6 @@
 package 手写一系列东西.CompletableFuture测试类;
 
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
+import java.util.concurrent.*;
 
 public class CompleteFutureTest {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -9,7 +8,10 @@ public class CompleteFutureTest {
             System.out.println(Thread.currentThread().getName());
             return 1;
         });
-        
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
+        executorService.execute(()->{
+            System.out.println("saasd");
+        });
         System.out.println(future.get());
         CompletableFuture<Integer> apply = future.thenApplyAsync((a) -> {
             System.out.println(Thread.currentThread().getName());

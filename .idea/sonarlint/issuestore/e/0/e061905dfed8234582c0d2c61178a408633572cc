@@ -1,0 +1,7 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¼å®ş
+\
+java:S2259U"AA "NullPointerException" could be thrown; "cur" is nullable here.(ß×¿ûÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(¹İ„
+F
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
