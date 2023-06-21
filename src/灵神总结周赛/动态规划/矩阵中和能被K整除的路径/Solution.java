@@ -8,7 +8,7 @@ public class Solution {
         int[][] g = {{5, 2, 4}, {3, 0, 5}, {0, 7, 2}};
         System.out.println(solution.numberOfPaths(g, 3));
     }
-
+        //可以在参数里面取余
     public int numberOfPaths(int[][] grid, int k) {
         Integer[][][] dp = new Integer[grid.length][grid[0].length][k];
         return fun(grid, 0, 0, k, grid[0][0], dp);
