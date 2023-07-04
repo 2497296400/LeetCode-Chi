@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.SopNoticeMapper">
+
+    <resultMap id="BaseResultMap" type="generator.domain.SopNotice">
+            <id property="noticeId" column="notice_id" jdbcType="BIGINT"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="content" column="content" jdbcType="VARCHAR"/>
+            <result property="noticeRange" column="notice_range" jdbcType="CHAR"/>
+            <result property="userList" column="user_list" jdbcType="VARCHAR"/>
+            <result property="delFlag" column="del_flag" jdbcType="CHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        notice_id,title,content,
+        notice_range,user_list,del_flag,
+        create_time,create_by
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from sop_notice
+        where  notice_id = #{noticeId,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from sop_notice
+        where  notice_id = #{noticeId,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="notice_id" keyProperty="noticeId" parameterType="generator.domain.SopNotice" useGeneratedKeys="true">
+        insert into sop_notice
+        ( notice_id,title,content
+        ,notice_range,user_list,del_flag
+        ,create_time,create_by)
+        values (#{noticeId,jdbcType=BIGINT},#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR}
+        ,#{noticeRange,jdbcType=CHAR},#{userList,jdbcType=VARCHAR},#{delFlag,jdbcType=CHAR}
+        ,#{createTime,jdbcType=TIMESTAMP},#{createBy,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="notice_id" keyProperty="noticeId" parameterType="generator.domain.SopNotice" useGeneratedKeys="true">
+        insert into sop_notice
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="noticeId != null">notice_id,</if>
+                <if test="title != null">title,</if>
+                <if test="content != null">content,</if>
+                <if test="noticeRange != null">notice_range,</if>
+                <if test="userList != null">user_list,</if>
+                <if test="delFlag != null">del_flag,</if>
+                <if test="createTime != null">create_time,</if>
+                <if test="createBy != null">create_by,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="noticeId != null">#{noticeId,jdbcType=BIGINT},</if>
+                <if test="title != null">#{title,jdbcType=VARCHAR},</if>
+                <if test="content != null">#{content,jdbcType=VARCHAR},</if>
+                <if test="noticeRange != null">#{noticeRange,jdbcType=CHAR},</if>
+                <if test="userList != null">#{userList,jdbcType=VARCHAR},</if>
+                <if test="delFlag != null">#{delFlag,jdbcType=CHAR},</if>
+                <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+                <if test="createBy != null">#{createBy,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="generator.domain.SopNotice">
+        update sop_notice
+        <set>
+                <if test="title != null">
+                    title = #{title,jdbcType=VARCHAR},
+                </if>
+                <if test="content != null">
+                    content = #{content,jdbcType=VARCHAR},
+                </if>
+                <if test="noticeRange != null">
+                    notice_range = #{noticeRange,jdbcType=CHAR},
+                </if>
+                <if test="userList != null">
+                    user_list = #{userList,jdbcType=VARCHAR},
+                </if>
+                <if test="delFlag != null">
+                    del_flag = #{delFlag,jdbcType=CHAR},
+                </if>
+                <if test="createTime != null">
+                    create_time = #{createTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="createBy != null">
+                    create_by = #{createBy,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   notice_id = #{noticeId,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="generator.domain.SopNotice">
+        update sop_notice
+        set 
+            title =  #{title,jdbcType=VARCHAR},
+            content =  #{content,jdbcType=VARCHAR},
+            notice_range =  #{noticeRange,jdbcType=CHAR},
+            user_list =  #{userList,jdbcType=VARCHAR},
+            del_flag =  #{delFlag,jdbcType=CHAR},
+            create_time =  #{createTime,jdbcType=TIMESTAMP},
+            create_by =  #{createBy,jdbcType=VARCHAR}
+        where   notice_id = #{noticeId,jdbcType=BIGINT} 
+    </update>
+</mapper>
