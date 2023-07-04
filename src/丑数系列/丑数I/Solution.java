@@ -1,15 +1,12 @@
 package 丑数系列.丑数I;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Set;
-import java.util.TreeSet;
-
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
+        
         System.out.println(solution.isUgly(8));
     }
+
     public boolean isUgly(int n) {
         if (n == 1) {
             return true;

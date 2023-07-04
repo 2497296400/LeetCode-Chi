@@ -1,4 +1,4 @@
-package 动态规划问题.最长有效括号;
+package 括号问题.最长有效括号;
 
 public class Solution {
     public static void main(String[] args) {

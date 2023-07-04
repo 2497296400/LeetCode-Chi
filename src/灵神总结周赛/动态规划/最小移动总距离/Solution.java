@@ -21,7 +21,7 @@ public class Solution {
         }
         if (j == factory.length - 1) {
             if (factory[j][1] < robot.size() - i) {
-                return Long.MAX_VALUE/2;
+                return Long.MAX_VALUE / 2;
             }
             long cur = 0L;
             for (int k = i; k < robot.size(); k++) {
@@ -32,13 +32,18 @@ public class Solution {
         if (dp[i][j] != -1) {
             return dp[i][j];
         }
-        long asn = fun(factory,robot,i,j+1,dp);
-        int k = 0;
+        long asn = fun(factory, robot, i, j + 1, dp);
+//        int k = 0;
+//        long cur = 0L;
+//        while (k < factory[j][1] && i + k < robot.size()) {
+//            cur += Math.abs(robot.get(i + k) - factory[j][0]);
+//            asn = Math.min(asn, fun(factory, robot, i + k, j + 1, dp) + cur);
+//            k++;
+//        }
         long cur = 0L;
-        while (k < factory[j][1] && i + k < robot.size()) {
+        for(int  k = 0;k<factory[j][1]&&i+k<robot.size();k++){
             cur += Math.abs(robot.get(i + k) - factory[j][0]);
-            asn = Math.min(asn, fun(factory, robot, i + k, j + 1, dp) + cur);
-            k++;
+            asn = Math.min(asn, fun(factory, robot, i + k, j + 1, dp) +cur);
         }
         return dp[i][j] = asn;
     }
