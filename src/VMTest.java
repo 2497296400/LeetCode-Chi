@@ -15,9 +15,6 @@ public class VMTest {
             last(root.left);
             last(root.right);
             System.out.printf(root.val + " ");
-            
-            
-            
         }
     }
 
