@@ -5,11 +5,11 @@ import java.util.Arrays;
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.MultiplicationOfLargeNumbers("511126", "101132"));
+        System.out.println(solution.multiplicationOfLargeNumbers("511126", "101132"));
 
     }
 
-    public String MultiplicationOfLargeNumbers(String f, String s) {
+    public String multiplicationOfLargeNumbers(String f, String s) {
         int fLen = f.length() - 1, sLen = s.length() - 1;
         int[] asn = new int[fLen + sLen + 2];
         for (int i = fLen; i >= 0; i--) {

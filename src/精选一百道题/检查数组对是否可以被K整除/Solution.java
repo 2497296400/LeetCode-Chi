@@ -8,6 +8,7 @@ public class Solution {
         System.out.println(canArrange(nums, 3));
         System.out.println(-2 % 3);
     }
+
     public static boolean canArrange(int[] arr, int k) {
         HashMap<Integer, Integer> hashMap = new HashMap<>();
         for (int temp : arr) {

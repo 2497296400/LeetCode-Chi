@@ -9,12 +9,8 @@ public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
         String s = "catsanddog";
-        List<String> list = new ArrayList<>();
-        list.add("cat");
-        list.add("cats");
-        list.add("and");
-        list.add("sand");
-        list.add("dog");
+        List<String> list = new ArrayList<>(List.of("cat", "cats", "and", "sand", "dog"));
+ 
         System.out.println(solution.wordBreak(s, list));
     }
     public List<String> wordBreak(String s, List<String> wordDict) {

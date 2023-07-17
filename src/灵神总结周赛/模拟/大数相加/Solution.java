@@ -3,39 +3,25 @@ package 灵神总结周赛.模拟.大数相加;
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.AdditionOfLargeNumbers("91423413299", "104231654321320"));
+        System.out.println(solution.additionOfLargeNumbers("91423413299", "104231654321320"));
     }
 
-    public String AdditionOfLargeNumbers(String f, String s) {
-        StringBuilder ans = new StringBuilder();
-        int fLen = f.length() - 1, sLen = s.length() - 1;
+    public String additionOfLargeNumbers(String f, String s) {
+        int fLen = f.length() - 1;
+        int sLen = s.length() - 1;
         int carry = 0;
-        while (fLen >= 0 && sLen >= 0) {
-            int curSum = f.charAt(fLen) - '0' + s.charAt(sLen) - '0' + carry;
+        StringBuilder ans = new StringBuilder();
+        while (fLen >= 0 || sLen >= 0) {
+            int fa = fLen >= 0 ? f.charAt(fLen--) - '0' : 0;
+            int sa = sLen >= 0 ? s.charAt(sLen--) - '0' : 0;
+            int curSum = fa + sa + carry;
             carry = curSum / 10;
-            ans.append(curSum % 10);
-            fLen--;
-            sLen--;
-
-        }
-        System.out.println(ans + " " + fLen + " " + sLen);
-
-        while (fLen >= 0) {
-            int curSum = f.charAt(fLen) - '0' + carry;
-            carry = curSum / 10;
-            ans.append(curSum % 10);
-            fLen--;
-        }
-        while (sLen >= 0) {
-            int curSum = s.charAt(sLen) - '0' + carry;
-            carry = curSum / 10;
-            ans.append(curSum % 10);
-            sLen--;
+            curSum = curSum % 10;
+            ans.append(curSum);
         }
         if (carry != 0) {
             ans.append(carry);
         }
-        ans.reverse();
-        return ans.toString();
+        return ans.reverse().toString();
     }
 }

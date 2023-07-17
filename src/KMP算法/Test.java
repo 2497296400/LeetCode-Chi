@@ -37,7 +37,7 @@ public class Test {
             } else if (next[cnt] != -1) {
                 cnt = next[cnt];
             } else {
-                preLast++;
+                next[preLast++] = 0;
             }
         }
         return next;
