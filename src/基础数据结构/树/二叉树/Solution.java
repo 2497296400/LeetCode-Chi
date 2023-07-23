@@ -1,5 +1,7 @@
 package 二叉树;
 
+import 力扣工具类.树的节点.TreeNode;
+
 public class Solution {
     public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
         if (root1 == null) return root2;
