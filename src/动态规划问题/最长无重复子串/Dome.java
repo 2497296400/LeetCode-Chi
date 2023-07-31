@@ -5,5 +5,7 @@ public class Dome {
         Solution s=new Solution();
         String str="abcae";
         System.out.println(Solution.lengthOfLongestSubstring(str));
+        Solution2 solution2 = new Solution2();
+        System.out.println(solution2.longestNonRepeatingSubstring(str));
     }
 }

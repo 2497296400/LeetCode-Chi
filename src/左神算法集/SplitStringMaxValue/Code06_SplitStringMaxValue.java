@@ -1,6 +1,9 @@
 package 左神算法集.SplitStringMaxValue;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.*;
 
 public class Code06_SplitStringMaxValue {
 
@@ -124,14 +127,31 @@ public class Code06_SplitStringMaxValue {
         return root;
     }
 
-    public static void main(String[] args) {
-        String str = "abcdefg";
-        int K = 2;
-        String[] parts = { "abc", "def", "g", "ab", "cd", "efg", "defg" };
-        int[] record = { 1, 1, 1, 3, 3, 3, 2 };
-        System.out.println(maxRecord1(str, K, parts, record));
-        System.out.println(maxRecord2(str, K, parts, record));
-        System.out.println(maxRecord3(str, K, parts, record));
+    public static void main(String[] args) throws InterruptedException {
+        
+        List<Integer> arrayList = new ArrayList<>();
+     //   List<Integer> integerList = Collections.synchronizedList(arrayList);
+        ExecutorService executorService = Executors.newFixedThreadPool(16);
+        List<Callable<Void>> taks = new ArrayList<>();
+        long s = System.currentTimeMillis();
+        for (int i = 0; i < 1000000; i++) {
+            int finalI = i;
+            taks.add(() -> {
+                arrayList.add(finalI);
+                return null;
+            });
+        }
+        executorService.invokeAll(taks).forEach(k -> {
+            try {
+                k.get();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } catch (ExecutionException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        System.out.println(System.currentTimeMillis() - s);
+        executorService.shutdown();
+        System.out.println(arrayList.size());
     }
-
 }

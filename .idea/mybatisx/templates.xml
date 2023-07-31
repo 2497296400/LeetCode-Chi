@@ -49,17 +49,17 @@
             <option name="tableUIInfoList">
               <list>
                 <TableUIInfo>
-                  <option name="className" value="SopNotice" />
-                  <option name="tableName" value="sop_notice" />
+                  <option name="className" value="EduUserPostEvaluation" />
+                  <option name="tableName" value="edu_user_post_evaluation" />
                 </TableUIInfo>
               </list>
             </option>
-            <option name="templatesName" value="default-all" />
+            <option name="templatesName" value="default-empty" />
           </GenerateConfig>
         </option>
         <option name="moduleName" value="力扣" />
         <option name="projectPath" value="$PROJECT_DIR$" />
-        <option name="templateName" value="default-all" />
+        <option name="templateName" value="default-empty" />
       </TemplateContext>
     </option>
   </component>
