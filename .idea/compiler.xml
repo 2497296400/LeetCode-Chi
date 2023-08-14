@@ -7,10 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="leetcode" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="itheima_spring" target="1.8" />
+      <module name="src" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

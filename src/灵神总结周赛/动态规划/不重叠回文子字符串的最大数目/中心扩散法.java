@@ -1,6 +1,10 @@
 package 灵神总结周赛.动态规划.不重叠回文子字符串的最大数目;
 
 public class 中心扩散法 {
+    public static void main(String[] args) {
+        System.out.println(new 中心扩散法().maxPalindromes("abaccba", 2));
+        
+    }
     //精髓中心扩散
     public int maxPalindromes(String s, int k) {
         char[] chars = s.toCharArray();

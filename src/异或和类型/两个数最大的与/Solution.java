@@ -14,6 +14,7 @@ public class Solution {
             int cur = 0;
             int tep = M;
             while (cur < M) {
+                //如果当前位为0，那么交换到前面去
                 if ((arr[cur] & (1 << bit)) == 0) {
                     swap(arr, cur, --M);
                 } else {
@@ -26,9 +27,9 @@ public class Solution {
             if (M < 2) {
                 M = tep;
             } else {
-                ans |= (1 << bit);
-            }
+                ans |= (1 << bit);}
         }
+            
         return ans;
 
     }

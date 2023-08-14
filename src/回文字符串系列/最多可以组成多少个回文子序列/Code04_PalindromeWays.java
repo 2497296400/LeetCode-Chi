@@ -35,6 +35,36 @@ public class Code04_PalindromeWays {
         return true;
     }
 
+    public static int ways3(String str) {
+        if (str == null || str.length() == 0) {
+            return 0;
+        }
+        char[] s = str.toCharArray();
+        int n = s.length;
+        int[][] memo = new int[n][n];
+        return memoizationSearch(s, 0, n - 1, memo);
+    }
+
+    private static int memoizationSearch(char[] s, int L, int R, int[][] memo) {
+        if (L > R) {
+            return 0;
+        }
+        if (L == R) {
+            return 1;
+        }
+        if (memo[L][R] > 0) {
+            return memo[L][R];
+        }
+
+        int count = memoizationSearch(s, L + 1, R, memo) + memoizationSearch(s, L, R - 1, memo) - memoizationSearch(s, L + 1, R - 1, memo);
+        if (s[L] == s[R]) {
+            count += memoizationSearch(s, L + 1, R - 1, memo) + 1;
+        }
+
+        memo[L][R] = count;
+        return count;
+    }
+
     public static int ways2(String str) {
         if (str == null || str.length() == 0) {
             return 0;
@@ -77,6 +107,7 @@ public class Code04_PalindromeWays {
             String str = randomString(len, types);
             int ans1 = ways1(str);
             int ans2 = ways2(str);
+            int ans3 = ways3(str);
             if (ans1 != ans2) {
                 System.out.println(str);
                 System.out.println(ans1);
@@ -84,6 +115,7 @@ public class Code04_PalindromeWays {
                 System.out.println("Oops!");
                 break;
             }
+            System.out.println(ans1 + " " + ans2 + " " + ans3);
         }
         System.out.println("测试结束");
     }

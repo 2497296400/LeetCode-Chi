@@ -23,9 +23,10 @@ public class Solution {
             System.out.println(pri[i]);
         }
         test();
+        test2();
     }
 
-    private static  void test() {
+    private static void test() {
         int n = 100;
         boolean[] vis = new boolean[n + 1];
         int[] isT = new int[n + 1];
@@ -36,11 +37,29 @@ public class Solution {
             }
             for (int j = 1; j <= curSum && isT[j] * i <= n; j++) {
                 vis[isT[j] * i] = true;
-                if(i%isT[j]==0){
+                if (i % isT[j] == 0) {
                     break;
                 }
             }
         }
         System.out.println(Arrays.toString(isT));
+    }
+
+    private static void test2() {
+        int n = 100;
+        boolean[] isT = new boolean[n + 1];
+        Arrays.fill(isT, true);
+        for (int i = 2; i * i <= n; i++) {
+            if (isT[i]) {
+                for (int j = i * i; j <= n; j += i) {
+                    isT[j] = false;
+                }
+            }
+        }
+        for (int i = 2; i <= n; i++) {
+            if (isT[i]) {
+                System.out.print(i + " ");
+            }
+        }
     }
 }

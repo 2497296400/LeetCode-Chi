@@ -28,7 +28,7 @@ public class Solution {
             else if (temp[nums[cur]] > 2) cnt += 1;
             value = Math.min(value, fun(nums, cur + 1, k, ans) + cnt + k);
         }
-        ans[index] = Long.valueOf(value);
+        ans[index] = (long) value;
         return value;
     }
 }

@@ -5,54 +5,61 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Solution {
-    public List<List<Integer>> NSum(int[] nums) {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int[] nums = {1, 0, -1, 0, -2, 2, 3, 4, 5, 1, 1, 1, 1, 1};
         Arrays.sort(nums);
-        List<Integer> collect = Arrays.stream(nums).boxed().toList();
-        return NSum(collect, 4, 0, 10);
+        List<List<Integer>> lists = solution.NSum(nums, 7, 7);
+        System.out.println(lists);
     }
 
-    private List<List<Integer>> NSum(List<Integer> nums, int n, int start, int target) {
-        List<List<Integer>> res = new ArrayList<>();
-        int size = nums.size();
-        if (n < 2 || size < n) {
-            return res;
-        }
-        if (n == 2) {
-            res = toSum(nums, start, target);
+    public List<List<Integer>> NSum(int[] nums, int dataSum, int target) {
+        if (dataSum == 2) {
+            return twoSum(nums, target);
         } else {
-            for (int i = start; i < nums.size(); i++) {
-                List<List<Integer>> sub = NSum(nums, n - 1, i + 1, target - nums.get(i));
-                for (List<Integer> list : sub) {
-                    list.add(nums.get(i));
-                    res.add(list);
+            List<List<Integer>> ans = null;
+            for (int i = 0; i < nums.length; i++) {
+                if (i > 0 && nums[i] == nums[i - 1]) {
+                    continue;
                 }
-                while (i < size - 1 && nums.get(i) == nums.get(i + 1)) {
-                    i++;
+                List<List<Integer>> lists = NSum(Arrays.copyOfRange(nums, i + 1, nums.length), dataSum - 1, target - nums[i]);
+                if (lists != null) {
+                    for (List<Integer> list : lists) {
+                        list.add(nums[i]);
+                    }
+                    if (ans == null) {
+                        ans = lists;
+                    } else {
+                        ans.addAll(lists);
+                    }
                 }
             }
+            return ans;
         }
-        return res;
     }
 
-    private List<List<Integer>> toSum(List<Integer> nums, int start, int target) {
-        int left = start, right = nums.size() - 1;
-        List<List<Integer>> asn = new ArrayList<>();
+    private List<List<Integer>> twoSum(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+        List<List<Integer>> ans = null;
         while (left < right) {
-            Integer leftSum = nums.get(left);
-            Integer rightSum = nums.get(right);
-            int sum = leftSum + rightSum;
-            if (sum < target) {
-                while (left < right && nums.get(left) == leftSum) {
-                    left++;
+            int sum = nums[left] + nums[right];
+            if (sum == target) {
+                if (ans == null) {
+                    ans = new ArrayList<>();
                 }
-            } else if (sum > target) {
-                while (right > left && nums.get(right) == rightSum) {
-                    right--;
-                }
+                List<Integer> list = new ArrayList<>();
+                list.add(nums[left]);
+                list.add(nums[right]);
+                ans.add(list);
+                left++;
+                right--;
+            } else if (sum < target) {
+                left++;
             } else {
-                asn.add(new ArrayList<>(Arrays.asList(left, right)));
+                right--;
             }
         }
-        return asn;
+        return ans;
     }
 }

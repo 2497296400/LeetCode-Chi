@@ -16,13 +16,11 @@ public class Singleton {
         }
         return singleton;
     }
-
 }
 
 class SinglentonFactory {
     private final static ConcurrentHashMap<String, Object> map = new ConcurrentHashMap<>();
-
-    public static <T> T getInstance(Class<T> clazz) {
+    public static <驰> 驰 getInstance(Class<驰> clazz) {
         String key = clazz.toString();
         if (map.contains(key)) {
             return clazz.cast(map.get(key));

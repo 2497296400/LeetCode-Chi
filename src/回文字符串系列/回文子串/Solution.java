@@ -2,9 +2,9 @@ package 回文字符串系列.回文子串;
 
 public class Solution {
     public static void main(String[] args) {
-        String s = "aaa";
+        String s = "aaaa";
         System.out.println(countSubstrings(s));
-
+        System.out.println(countSubstrings2(s));
     }
 
     static int num = 0;
@@ -23,6 +23,18 @@ public class Solution {
             start--;
             end++;
         }
+    }
+
+    public static int countSubstrings2(String s) {
+        for (int i = 0; i < s.length() * 2 - 1; i++) {
+            int l = i / 2, r = l+ i % 2;
+            while (l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) {
+                num++;
+                l--;
+                r++;
+            }
+        }
+        return num;
     }
 }
 

@@ -26,7 +26,7 @@ public class Solution {
         if (left == right) {
             return p == 1 ? 0 : -1;
         }
-
+        
         if (p == 1) {
             int next = fun(left, right, k, k, presum, dp);
             if (next == -1) {
@@ -36,7 +36,9 @@ public class Solution {
             }
         } else {
             int curMin = Integer.MAX_VALUE;
+            // 枚举分界点
             for (int cur = left; cur < right; cur += k - 1) {
+                // 左边的合并成1堆，右边的合并成p-1堆
                 int p1 = fun(left, cur, k, 1, presum, dp);
                 int p2 = fun(cur + 1, right, k, p - 1, presum, dp);
                 if (p1 == -1 || p2 == -1) {

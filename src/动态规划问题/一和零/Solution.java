@@ -10,7 +10,7 @@ public class Solution {
     }
 
     public int findMaxForm(String[] strs, int m, int n) {
-        int[][][] dp = new int[m+1][n+1][strs.length+1];
+        int[][][] dp = new int[m + 1][n + 1][strs.length + 1];
         for (int i = 0; i <= m; i++) {
             for (int j = 0; j <= n; j++) {
                 for (int k = 0; k <= strs.length; k++) {
@@ -18,26 +18,23 @@ public class Solution {
                 }
             }
         }
-        return fun(strs, m, n, 0,dp);
+        return fun(strs, m, n, 0, dp);
     }
 
     private int fun(String[] strs, int m, int n, int start, int[][][] dp) {
         if (m < 0 || n < 0) {
             return -1;
         }
-        if (m == 0 && n == 0||start==strs.length) {
+        if (m == 0 && n == 0 || start == strs.length) {
             return 0;
         }
-        if(dp[m][n][start]!=-1){
+        if (dp[m][n][start] != -1) {
             return dp[m][n][start];
         }
-        int curMax = 0;
         int[] cur = get(strs[start]);
-        int p1 = fun(strs, m - cur[0], n - cur[1], start+1, dp);
-        int p2 = fun(strs, m, n, start+1, dp);
-        curMax = Math.max(curMax, Math.max(p2, p1 + 1));
-        dp[m][n][start]=curMax;
-        return curMax;
+        int p1 = fun(strs, m - cur[0], n - cur[1], start + 1, dp) + 1;
+        int p2 = fun(strs, m, n, start + 1, dp);
+        return dp[m][n][start] =  Math.max(p2, p1 + 1);
     }
 
     private int[] get(String str) {

@@ -25,7 +25,6 @@ public class Solution {
             for (int k : arr) {
                 int digit = k / n % 10;
                 bucket[digit][bucketCount[digit]++] = k;
-
             }
             int index = 0;
             for (int j = 0; j < bucket.length; j++) {

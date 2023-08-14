@@ -1,6 +1,5 @@
 package 手写一系列东西.手写线程池;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
@@ -20,7 +19,7 @@ public class ThreadTestTow implements Executor {
     }
 
     @Override
-    public void execute(@NotNull Runnable command) {
+    public void execute( Runnable command) {
         if (atomicInteger.get() < core) {
             if (!addWork(command)) {
                 reject();

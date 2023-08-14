@@ -1,15 +1,11 @@
+package 美团笔试题;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StreamTokenizer;
+import java.io.*;
 import java.util.Arrays;
 import java.util.HashMap;
 
 public class Main {
-    public static StreamTokenizer tokenizer = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
-
-    public static void main(String[] args) throws IOException {
+    public static StreamTokenizer tokenizer = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));public static void main(String[] args) throws IOException {
         int T = (int) nextInt();
         for (int i = 0; i < T; i++) {
             int m = (int) nextInt();
@@ -37,7 +33,7 @@ public class Main {
             return false;
         }
         int cur = (int) (sum / (arr.length / 2));
-       // System.out.println(cur);
+        // System.out.println(cur);
         for (int i = 0; i < arr.length; i++) {
             if (map.isEmpty()) {
                 return true;
