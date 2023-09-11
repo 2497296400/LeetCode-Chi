@@ -15,8 +15,8 @@
             <option name="ignoreFieldSuffix" value="" />
             <option name="ignoreTablePrefix" value="" />
             <option name="ignoreTableSuffix" value="" />
-            <option name="moduleName" value="力扣" />
-            <option name="modulePath" value="$PROJECT_DIR$" />
+            <option name="moduleName" value="leetcode" />
+            <option name="modulePath" value="$PROJECT_DIR$/src" />
             <option name="moduleUIInfoList">
               <list>
                 <ModuleInfoGo>
@@ -26,7 +26,7 @@
                   <option name="encoding" value="${domain.encoding}" />
                   <option name="fileName" value="${domain.fileName}Mapper" />
                   <option name="fileNameWithSuffix" value="${domain.fileName}Mapper.java" />
-                  <option name="modulePath" value="$PROJECT_DIR$" />
+                  <option name="modulePath" value="$PROJECT_DIR$/src" />
                   <option name="packageName" value="${domain.basePackage}.mapper" />
                 </ModuleInfoGo>
                 <ModuleInfoGo>
@@ -36,7 +36,7 @@
                   <option name="encoding" value="${domain.encoding}" />
                   <option name="fileName" value="${domain.fileName}Mapper" />
                   <option name="fileNameWithSuffix" value="${domain.fileName}Mapper.xml" />
-                  <option name="modulePath" value="$PROJECT_DIR$" />
+                  <option name="modulePath" value="$PROJECT_DIR$/src" />
                   <option name="packageName" value="mapper" />
                 </ModuleInfoGo>
               </list>
@@ -49,17 +49,29 @@
             <option name="tableUIInfoList">
               <list>
                 <TableUIInfo>
-                  <option name="className" value="EduUserPostEvaluation" />
-                  <option name="tableName" value="edu_user_post_evaluation" />
+                  <option name="className" value="SopPostStandard" />
+                  <option name="tableName" value="sop_post_standard" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="SopPostStandardInfo" />
+                  <option name="tableName" value="sop_post_standard_info" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="SopProjectTemplate" />
+                  <option name="tableName" value="sop_project_template" />
+                </TableUIInfo>
+                <TableUIInfo>
+                  <option name="className" value="SopProjectTemplateAbility" />
+                  <option name="tableName" value="sop_project_template_ability" />
                 </TableUIInfo>
               </list>
             </option>
-            <option name="templatesName" value="default-empty" />
+            <option name="templatesName" value="default-all" />
           </GenerateConfig>
         </option>
-        <option name="moduleName" value="力扣" />
+        <option name="moduleName" value="leetcode" />
         <option name="projectPath" value="$PROJECT_DIR$" />
-        <option name="templateName" value="default-empty" />
+        <option name="templateName" value="default-all" />
       </TemplateContext>
     </option>
   </component>

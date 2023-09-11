@@ -12,6 +12,7 @@ public class Solution {
     public String multiplicationOfLargeNumbers(String f, String s) {
         int fLen = f.length() - 1, sLen = s.length() - 1;
         int[] asn = new int[fLen + sLen + 2];
+        //按照位数 每个位置相乘 放在相应位置上
         for (int i = fLen; i >= 0; i--) {
             for (int j = sLen; j >= 0; j--) {
                 int curSum = (f.charAt(i) - '0') * (s.charAt(j) - '0');

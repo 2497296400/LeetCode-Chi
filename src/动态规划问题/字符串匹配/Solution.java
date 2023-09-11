@@ -85,7 +85,9 @@ public class Solution {
         }
         boolean ans;
         if (plen + 1 == pChar.length || pChar[plen + 1] != '*') {
-            return slen != sChar.length && (pChar[plen] == sChar[slen] || pChar[plen] == '.') && fun3(sChar, pChar, slen + 1, plen + 1);
+            return slen != sChar.length && 
+                    (pChar[plen] == sChar[slen] || pChar[plen] == '.') 
+                    && fun3(sChar, pChar, slen + 1, plen + 1);
         } else {
             if (slen == sChar.length) {
                 ans = fun3(sChar, pChar, slen, plen + 2);

@@ -1,6 +1,8 @@
 package 灵神总结周赛.动态规划.网格图中递增路径的数目;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Solution {
     int MOD = (int) (1e9 + 7);
@@ -32,7 +34,7 @@ public class Solution {
             return dp[i][j];
         }
         //精髓 也是当前状态
-        
+        Queue<String> q =new LinkedList<>();
         long res = 1;
         for (int c = 0; c < 4; c++) {
             int[] ints = v[c];

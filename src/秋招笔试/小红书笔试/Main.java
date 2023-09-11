@@ -4,16 +4,37 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StreamTokenizer;
+import java.util.*;
 
 public class Main {
     //树状数组
     static StreamTokenizer in = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
+    static List<List<Integer>> all;
 
     public static void main(String[] args) throws IOException {
-        IndexTreeTow indexTreeTow = new IndexTreeTow(10);
-        indexTreeTow.update(1, 4, 5);
-        System.out.println(indexTreeTow.query(1, 5));
+        Scanner scanner = new Scanner(System.in);
+        char[] c = scanner.next().toCharArray();
+        long ans = 0;
+        int l = 0, r = 0;
+        while (l < c.length) {
+            int preOne = 0, preZero = 0;
+            while (r < c.length) {
+                if (c[r] == '1') {
+                    preOne++;
+                } else {
+                    preZero++;
+                }
+                r++;
+                if (preOne >= preZero) {
+                    break;
+                }
+                ans += preZero - preOne;
+            }
+            l = r;
+        }
+        System.out.println(ans);
     }
+    
 
     public static boolean isT(int target) {
         if (target == 1) {

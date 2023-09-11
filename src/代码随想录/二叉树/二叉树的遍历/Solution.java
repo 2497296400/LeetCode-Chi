@@ -12,43 +12,70 @@ public class Solution {
     public static void main(String[] args) {
         TreeNode treeNode = LeetCodeUtils.GetTreeNode(new Integer[]{1, 2, 3, null, null, 4, 5});
         Solution solution = new Solution();
-        //    solution.preOrder(treeNode);
-        // solution.inOrder(treeNode);
-//        solution.postOrder(treeNode);
-//        System.out.println("-------");
-//        solution.postOrder2(treeNode);
+        solution.preOrder(treeNode);
+        solution.inorder(treeNode);
+        solution.postOrder(treeNode);
+        solution.inOrder2(treeNode);
+        System.out.println("-------");
         solution.hierarchicalTraversal(treeNode, 0);
         solution.deepList.forEach(System.out::println);
     }
 
-    //迭代版前序遍历
-    public void preOrder(TreeNode root) {
-        if (root == null) {
+    public void preOrder(TreeNode curNode) {
+        if (curNode == null) {
             return;
         }
         Stack<TreeNode> stack = new Stack<>();
-        stack.add(root);
+        stack.add(curNode);
         while (!stack.isEmpty()) {
-            TreeNode curNode = stack.pop();
-            if (curNode.right != null) {
-                stack.push(curNode.right);
+            TreeNode pop = stack.pop();
+            System.out.println(pop.val);
+            if (pop.right != null) {
+                stack.add(pop.right);
             }
-            if (curNode.left != null) {
-                stack.push(curNode.left);
+            if (pop.left != null) {
+                stack.add(pop.left);
             }
-            System.out.println(curNode.val);
         }
     }
 
-    //迭代版中序遍历
+    public void inOrder2(TreeNode curNode) {
+        if (curNode == null) {
+            return;
+        }
+        inorder(curNode.left);
+        System.out.println(curNode.val);
+        inorder(curNode.right);
+    }
 
-    public void inOrder(TreeNode root) {
-        if (root == null) {
+    public void postOrder(TreeNode curNode) {
+        if (curNode == null) {
             return;
         }
         Stack<TreeNode> stack = new Stack<>();
+        stack.add(curNode);
+        List<Integer> post = new ArrayList<>();
+        while (!stack.isEmpty()) {
+            TreeNode pop = stack.pop();
+            post.add(pop.val);
+            if (pop.left != null) {
+                stack.add(pop.left);
+            }
+            if (pop.right != null) {
+                stack.add(pop.right);
+            }
+        }
+        Collections.reverse(post);
+        System.out.println(post);
+    }
 
-        TreeNode curNode = root;
+    public void inorder(TreeNode curNode) {
+        if (curNode == null) {
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode temp = curNode;
+
         while (!stack.isEmpty() || curNode != null) {
             if (curNode != null) {
                 stack.push(curNode);
@@ -59,53 +86,6 @@ public class Solution {
                 curNode = pop.right;
             }
         }
-    }
-
-    //迭代后续遍历
-    public void postOrder(TreeNode root) {
-        if (root == null) {
-            return;
-        }
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode curNode = root;
-        TreeNode lastVistit = null;
-        while (!stack.isEmpty() || curNode != null) {
-            if (curNode != null) {
-                stack.push(curNode);
-                curNode = curNode.left;
-            } else {
-                TreeNode peek = stack.peek();
-                if (peek.right != null && peek.right != lastVistit) {
-                    curNode = peek.right;
-                } else {
-                    lastVistit = stack.pop();
-                    System.out.println(lastVistit.val);
-                }
-            }
-        }
-    }
-
-    //递归版后续遍历
-    public void postOrder2(TreeNode root) {
-        if (root == null) {
-            return;
-        }
-        Stack<TreeNode> stack = new Stack<>();
-        ArrayList<Integer> post = new ArrayList<>();
-        TreeNode curNode = root;
-        stack.push(curNode);
-        while (!stack.isEmpty()) {
-            curNode = stack.pop();
-            post.add(curNode.val);
-            if (curNode.left != null) {
-                stack.push(curNode.left);
-            }
-            if (curNode.right != null) {
-                stack.push(curNode.right);
-            }
-        }
-        Collections.reverse(post);
-        System.out.println(post);
     }
 
     List<List<Integer>> deepList = new ArrayList<>();

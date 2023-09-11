@@ -21,17 +21,18 @@ public class Solution {
         return buildTree(inorderMap, 0, inorder.length - 1, postorder, 0, postorder.length - 1);
     }
 
-    private TreeNode buildTree(HashMap<Integer, Integer> inorderMap, int il, int ir, int[] postorder, int pl, int pr) {
-        if (pl > pr) {
+    private TreeNode buildTree(HashMap<Integer, Integer> inorderMap, int il, int ir, int[] postorder, int hl, int hr) {
+        if (hl > hr) {
             return null;
         }
-        int crossLine = inorderMap.get(postorder[pr]);
-        TreeNode treeNode = new TreeNode(postorder[pr]);
-        int leftSize = crossLine - il;
-        int rightSize = ir - crossLine;
-      //  System.out.println(leftSize + "---" + crossLine + "---" + rightSize);
-        treeNode.left = buildTree(inorderMap, il, crossLine - 1, postorder, pl, pl + leftSize - 1);
-        treeNode.right = buildTree(inorderMap, crossLine + 1, ir, postorder, pr - rightSize, pr - 1);
-        return treeNode;
+        
+        int curIndex = inorderMap.get(postorder[hr]);
+        TreeNode newNode = new TreeNode(postorder[hr]);
+        int leftSize = curIndex - il;
+        int rightSize = ir - curIndex;
+        
+        newNode.left = buildTree(inorderMap, il, curIndex - 1, postorder, hl, hl + leftSize-1);
+        newNode.right = buildTree(inorderMap, curIndex + 1, ir, postorder, hr -rightSize, hr - 1);
+        return newNode;
     }
 }

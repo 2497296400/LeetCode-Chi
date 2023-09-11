@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 /**
  * 
- * @TableName edu_user_notice
+ * @TableName edu_user_problem
  */
-public class EduUserNotice implements Serializable {
+public class EduUserProblem implements Serializable {
     /**
      * 主键id
      */
@@ -18,9 +18,14 @@ public class EduUserNotice implements Serializable {
     private Long userId;
 
     /**
-     * 通知id集合
+     * 问题id
      */
-    private String noticeList;
+    private Long problemId;
+
+    /**
+     * 是否解决有帮助（0是，1否）
+     */
+    private String solve;
 
     private static final long serialVersionUID = 1L;
 
@@ -53,17 +58,31 @@ public class EduUserNotice implements Serializable {
     }
 
     /**
-     * 通知id集合
+     * 问题id
      */
-    public String getNoticeList() {
-        return noticeList;
+    public Long getProblemId() {
+        return problemId;
     }
 
     /**
-     * 通知id集合
+     * 问题id
      */
-    public void setNoticeList(String noticeList) {
-        this.noticeList = noticeList;
+    public void setProblemId(Long problemId) {
+        this.problemId = problemId;
+    }
+
+    /**
+     * 是否解决有帮助（0是，1否）
+     */
+    public String getSolve() {
+        return solve;
+    }
+
+    /**
+     * 是否解决有帮助（0是，1否）
+     */
+    public void setSolve(String solve) {
+        this.solve = solve;
     }
 
     @Override
@@ -77,10 +96,11 @@ public class EduUserNotice implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        EduUserNotice other = (EduUserNotice) that;
+        EduUserProblem other = (EduUserProblem) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
-            && (this.getNoticeList() == null ? other.getNoticeList() == null : this.getNoticeList().equals(other.getNoticeList()));
+            && (this.getProblemId() == null ? other.getProblemId() == null : this.getProblemId().equals(other.getProblemId()))
+            && (this.getSolve() == null ? other.getSolve() == null : this.getSolve().equals(other.getSolve()));
     }
 
     @Override
@@ -89,7 +109,8 @@ public class EduUserNotice implements Serializable {
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
-        result = prime * result + ((getNoticeList() == null) ? 0 : getNoticeList().hashCode());
+        result = prime * result + ((getProblemId() == null) ? 0 : getProblemId().hashCode());
+        result = prime * result + ((getSolve() == null) ? 0 : getSolve().hashCode());
         return result;
     }
 
@@ -101,7 +122,8 @@ public class EduUserNotice implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", userId=").append(userId);
-        sb.append(", noticeList=").append(noticeList);
+        sb.append(", problemId=").append(problemId);
+        sb.append(", solve=").append(solve);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

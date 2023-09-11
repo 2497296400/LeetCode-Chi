@@ -26,10 +26,10 @@ public class Solution {
         }
         int next = Integer.MAX_VALUE;
         for (int cur = left; cur < right; cur++) {
-            next = Math.min(next, fun(left, cur, sum) + fun(cur + 1, right, sum));
+            
+            next = Math.min(next, fun(left, cur, sum) + fun(cur+1, right, sum)+ getSum(left, right, sum));
         }
-
-        return next + getSum(left, right, sum);
+        return next;
     }
     private int getSum(int left, int right, int[] sum) {
         return sum[right + 1] - sum[left];

@@ -88,4 +88,12 @@ public class LeetCodeUtils {
         int[][] intTow = getIntTow("[" + s + ']');
         return intTow[0];
     }
+
+    public static void printListNode(ListNode resver) {
+        while (resver != null) {
+            System.out.print(resver.val + " ");
+            resver = resver.next;
+        }
+        System.out.println();
+    }
 }

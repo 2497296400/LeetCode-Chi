@@ -29,7 +29,7 @@ public class Solution {
         if (!isNum) {
             ans = fun(chars, cur + 1, mark, false, false, dp);
         }
-        int up = isLim ? (int) chars[cur] - '0' : 9;
+        int up = isLim ?  chars[cur] - '0' : 9;
         for (int i = isNum ? 0 : 1; i <= up; i++) {
             ans += fun(chars, cur + 1, mark + (i == 1 ? 1 : 0), true, isLim && i == up, dp);
         }

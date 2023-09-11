@@ -5,36 +5,41 @@ import java.util.Date;
 
 /**
  * 
- * @TableName sop_notice
+ * @TableName sop_problem
  */
-public class SopNotice implements Serializable {
+public class SopProblem implements Serializable {
     /**
      * 主键id
      */
-    private Long noticeId;
+    private Long problemId;
 
     /**
-     * 通知标题
+     * 问题标题
      */
     private String title;
 
     /**
-     * 通知内容
+     * 问题内容
      */
     private String content;
 
     /**
-     * 通知范围（0全部，1部分）
+     * 查看数
      */
-    private String noticeRange;
+    private Long viewCount;
 
     /**
-     * 通知用户集合
+     * 是否置顶（0是  1否）
      */
-    private String userList;
+    private String istop;
 
     /**
-     * 是否删除（0存在，2删除）
+     * 状态（0启用，1停用）
+     */
+    private String status;
+
+    /**
+     * 删除标志（0存在，2删除）
      */
     private String delFlag;
 
@@ -48,87 +53,106 @@ public class SopNotice implements Serializable {
      */
     private String createBy;
 
+    /**
+     * 更新时间
+     */
+    private Date updateTime;
+
     private static final long serialVersionUID = 1L;
 
     /**
      * 主键id
      */
-    public Long getNoticeId() {
-        return noticeId;
+    public Long getProblemId() {
+        return problemId;
     }
 
     /**
      * 主键id
      */
-    public void setNoticeId(Long noticeId) {
-        this.noticeId = noticeId;
+    public void setProblemId(Long problemId) {
+        this.problemId = problemId;
     }
 
     /**
-     * 通知标题
+     * 问题标题
      */
     public String getTitle() {
         return title;
     }
 
     /**
-     * 通知标题
+     * 问题标题
      */
     public void setTitle(String title) {
         this.title = title;
     }
 
     /**
-     * 通知内容
+     * 问题内容
      */
     public String getContent() {
         return content;
     }
 
     /**
-     * 通知内容
+     * 问题内容
      */
     public void setContent(String content) {
         this.content = content;
     }
 
     /**
-     * 通知范围（0全部，1部分）
+     * 查看数
      */
-    public String getNoticeRange() {
-        return noticeRange;
+    public Long getViewCount() {
+        return viewCount;
     }
 
     /**
-     * 通知范围（0全部，1部分）
+     * 查看数
      */
-    public void setNoticeRange(String noticeRange) {
-        this.noticeRange = noticeRange;
+    public void setViewCount(Long viewCount) {
+        this.viewCount = viewCount;
     }
 
     /**
-     * 通知用户集合
+     * 是否置顶（0是  1否）
      */
-    public String getUserList() {
-        return userList;
+    public String getIstop() {
+        return istop;
     }
 
     /**
-     * 通知用户集合
+     * 是否置顶（0是  1否）
      */
-    public void setUserList(String userList) {
-        this.userList = userList;
+    public void setIstop(String istop) {
+        this.istop = istop;
     }
 
     /**
-     * 是否删除（0存在，2删除）
+     * 状态（0启用，1停用）
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * 状态（0启用，1停用）
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    /**
+     * 删除标志（0存在，2删除）
      */
     public String getDelFlag() {
         return delFlag;
     }
 
     /**
-     * 是否删除（0存在，2删除）
+     * 删除标志（0存在，2删除）
      */
     public void setDelFlag(String delFlag) {
         this.delFlag = delFlag;
@@ -162,6 +186,20 @@ public class SopNotice implements Serializable {
         this.createBy = createBy;
     }
 
+    /**
+     * 更新时间
+     */
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    /**
+     * 更新时间
+     */
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -173,29 +211,33 @@ public class SopNotice implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        SopNotice other = (SopNotice) that;
-        return (this.getNoticeId() == null ? other.getNoticeId() == null : this.getNoticeId().equals(other.getNoticeId()))
+        SopProblem other = (SopProblem) that;
+        return (this.getProblemId() == null ? other.getProblemId() == null : this.getProblemId().equals(other.getProblemId()))
             && (this.getTitle() == null ? other.getTitle() == null : this.getTitle().equals(other.getTitle()))
             && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()))
-            && (this.getNoticeRange() == null ? other.getNoticeRange() == null : this.getNoticeRange().equals(other.getNoticeRange()))
-            && (this.getUserList() == null ? other.getUserList() == null : this.getUserList().equals(other.getUserList()))
+            && (this.getViewCount() == null ? other.getViewCount() == null : this.getViewCount().equals(other.getViewCount()))
+            && (this.getIstop() == null ? other.getIstop() == null : this.getIstop().equals(other.getIstop()))
+            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
             && (this.getDelFlag() == null ? other.getDelFlag() == null : this.getDelFlag().equals(other.getDelFlag()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getCreateBy() == null ? other.getCreateBy() == null : this.getCreateBy().equals(other.getCreateBy()));
+            && (this.getCreateBy() == null ? other.getCreateBy() == null : this.getCreateBy().equals(other.getCreateBy()))
+            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getNoticeId() == null) ? 0 : getNoticeId().hashCode());
+        result = prime * result + ((getProblemId() == null) ? 0 : getProblemId().hashCode());
         result = prime * result + ((getTitle() == null) ? 0 : getTitle().hashCode());
         result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
-        result = prime * result + ((getNoticeRange() == null) ? 0 : getNoticeRange().hashCode());
-        result = prime * result + ((getUserList() == null) ? 0 : getUserList().hashCode());
+        result = prime * result + ((getViewCount() == null) ? 0 : getViewCount().hashCode());
+        result = prime * result + ((getIstop() == null) ? 0 : getIstop().hashCode());
+        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
         result = prime * result + ((getDelFlag() == null) ? 0 : getDelFlag().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getCreateBy() == null) ? 0 : getCreateBy().hashCode());
+        result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         return result;
     }
 
@@ -205,14 +247,16 @@ public class SopNotice implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", noticeId=").append(noticeId);
+        sb.append(", problemId=").append(problemId);
         sb.append(", title=").append(title);
         sb.append(", content=").append(content);
-        sb.append(", noticeRange=").append(noticeRange);
-        sb.append(", userList=").append(userList);
+        sb.append(", viewCount=").append(viewCount);
+        sb.append(", istop=").append(istop);
+        sb.append(", status=").append(status);
         sb.append(", delFlag=").append(delFlag);
         sb.append(", createTime=").append(createTime);
         sb.append(", createBy=").append(createBy);
+        sb.append(", updateTime=").append(updateTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

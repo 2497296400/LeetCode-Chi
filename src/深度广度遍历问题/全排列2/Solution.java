@@ -1,15 +1,18 @@
 package 深度广度遍历问题.全排列2;
 
-import java.util.*;
-
-import static java.util.Arrays.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
 
 class Solution {
     public static void main(String[] args) {
         int[] nums = {1, 1, 2};
-        List<List<Integer>> lists = new Solution().permuteUnique(nums);
-        System.out.println(lists);
+        Long[] split = Arrays.stream("".split("")).filter(v-> !v.isEmpty()).
+                map(Long::parseLong).toArray(Long[]::new);
+        System.out.println(Arrays.toString(split));
     }
+    
 
     public List<List<Integer>> permuteUnique(int[] nums) {
         Arrays.sort(nums);

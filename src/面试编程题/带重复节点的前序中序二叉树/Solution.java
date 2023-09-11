@@ -26,7 +26,7 @@ public class Solution {
 
     private ArrayList<TreeNode> fun(List<Integer> preOrder, int preL, int preR, List<Integer> inOrder, int il, int ir) {
         ArrayList<TreeNode> ans = new ArrayList<>();
-        if (preL > preR || il > ir) {
+        if (preL > preR ) {
             ans.add(null);
             return ans;
         }

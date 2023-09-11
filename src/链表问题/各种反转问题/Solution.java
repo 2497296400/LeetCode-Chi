@@ -6,8 +6,10 @@ import 力扣工具类.链表节点.ListNode;
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] arr = {1, 2, 3, 4, 5, 6};
+        int[] arr = {1, 2, 3, 4, 5};
         ListNode node = LeetCodeUtils.getNode(arr);
+        node = solution.resver(node);
+        solution.print(node);
 
         ListNode resver = solution.reverGrapNode(node, 5);
         // ListNode aFor = solution.resverFor(resver);
@@ -25,7 +27,7 @@ public class Solution {
     }
 
     public ListNode resver(ListNode head) {
-        if (head == null || head.next == null) {
+        if (head.next == null) {
             return head;
         }
         ListNode lastNode = resver(head.next);
@@ -78,6 +80,7 @@ public class Solution {
             }
             end = end.next;
         }
+
         ListNode newHead = resver(start, end);
         start.next = resverGroup(end, N);
         return newHead;
@@ -103,7 +106,7 @@ public class Solution {
         ListNode swapPairs = swapPairs(next.next);
         next.next = head;
         head.next = swapPairs;
-        return swapPairs;
+        return next;
     }
 
     //再来一边
@@ -112,8 +115,7 @@ public class Solution {
             return null;
         }
         ListNode lastNode = reversalNode(head.next);
-        head.next.next = head;
-
+        lastNode.next = head;
         head.next = null;
         return lastNode;
     }
@@ -150,31 +152,29 @@ public class Solution {
         return lastNode;
     }
 
-    private ListNode reverGrapNode(ListNode head, int k) {
+    public ListNode reverGrapNode(ListNode head, int k) {
         if (head == null) {
             return null;
         }
-        ListNode start = head;
-        ListNode end = head;
+        ListNode start = head, end = head;
         for (int i = 0; i < k; i++) {
-            if (end == null) {
+            if (end.next == null) {
                 return head;
             }
             end = end.next;
         }
-        ListNode newNode = resverByNode(start, end);
-        head.next= reverGrapNode(end, k);
+        ListNode newNode = resver(start, end);
+        start.next = reverGrapNode(end, k);
         return newNode;
     }
-    
-    private ListNode resverByNode(ListNode start, ListNode end) {
+
+    public ListNode resvers(ListNode f, ListNode s) {
         ListNode pre = null;
-        ListNode cur = start;
-        while (cur != end) {
-            ListNode temp = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = temp;
+        while (f != s) {
+            ListNode next = f.next;
+            f.next = pre;
+            pre = f;
+            f = next;
         }
         return pre;
     }

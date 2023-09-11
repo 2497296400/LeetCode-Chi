@@ -19,6 +19,7 @@ public class FutureTest {
         completableFuture.thenRun(() -> {
             System.out.println("4");
         });
+        
         completableFuture.get();
     }
 

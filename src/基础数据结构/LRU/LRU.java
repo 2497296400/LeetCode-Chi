@@ -3,69 +3,67 @@ package 基础数据结构.LRU;
 import java.util.HashMap;
 
 public class LRU {
-    HashMap<Integer, Integer> dataMap;
-    HashMap<Integer, Node> nodeMap;
-    int size;
     Node head;
     Node tail;
+    int size;
+    HashMap<Integer, Node> dataMap;
+    HashMap<Node, Integer> nodeMap;
 
-    public LRU(int N) {
+    public LRU(int size) {
         dataMap = new HashMap<>();
         nodeMap = new HashMap<>();
-        size = N;
-        head = new Node();
-        tail = new Node();
+        this.size = size;
+        head = new Node(-1);
+        tail = new Node(-1);
         head.next = tail;
         tail.pre = head;
     }
 
     public void put(int key, int value) {
-        dataMap.put(key, value);
-        Node curNode = nodeMap.get(key);
+        Node curNode = dataMap.get(key);
         if (curNode == null) {
-            curNode = new Node(key);
-            nodeMap.put(key, curNode);
+            curNode = new Node(value);
+            dataMap.put(key, curNode);
+            nodeMap.put(curNode, key);
+        } else {
+            curNode.var = value;
+        }
+        if (dataMap.size() > size) {
+            removeTail();
         }
         moveHead(curNode);
-        if (dataMap.size() > size) {
-            Integer removeKey = removeTail();
-            nodeMap.remove(removeKey);
-            dataMap.remove(removeKey);
+    }
+
+    private void moveHead(Node curNode) {
+        if (curNode.pre != null) {
+            removeNode(curNode);
         }
+        curNode.next = head.next;
+        head.next.pre = curNode;
+        curNode.pre = head;
+        head.next = curNode;
     }
 
-    private void moveHead(Node node) {
-        if (node.pre == null) {
-            node.next = head.next;
-            node.pre = head;
-            head.next.pre = node;
-            head.next = node;
-            return;
-        }
-        removeNode(node);
-        node.next = head.next;
-        node.pre = head;
-        head.next.pre = node;
-        head.next = node;
+    private void removeNode(Node curNode) {
+        curNode.pre.next = curNode.next;
+        curNode.next.pre = curNode.pre;
     }
 
-    private Integer removeTail() {
-        int var = tail.pre.var;
-        removeNode(tail.pre);
-        return var;
-    }
 
-    private void removeNode(Node node) {
-        node.pre.next = node.next;
-        node.next.pre = node.pre;
+    private void removeTail() {
+        Node pre = tail.pre;
+        removeNode(pre);
+        Integer remove = nodeMap.remove(pre);
+        dataMap.remove(remove);
     }
 
     public int get(int key) {
-        Integer ans = dataMap.getOrDefault(key, -1);
-        if (ans != -1) {
-            moveHead(nodeMap.get(key));
+        Node var = dataMap.getOrDefault(key, null);
+        if (var == null) {
+            return -1;
         }
-        return ans;
+        moveHead(var);
+        return var.var;
     }
 
     class Node {
@@ -73,23 +71,18 @@ public class LRU {
         Node next;
         Node pre;
 
-        public Node() {
-        }
-
         public Node(int var) {
             this.var = var;
         }
     }
 
     public static void main(String[] args) {
-        LRU lru = new LRU(3);
+        LRU lru = new LRU(2);
         lru.put(1, 2);
-        lru.put(2, 4);
-        lru.put(5, 6);
-        lru.put(9, 9);
+        lru.put(1, 3);
+        lru.put(2, 5);
         System.out.println(lru.get(1));
         System.out.println(lru.get(2));
-        lru.put(1, 1);
         System.out.println(lru.get(5));
     }
 }

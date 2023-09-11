@@ -20,21 +20,21 @@ public class Solution {
         arrayList.add(0, 1);
         arrayList.add(1);
         int[][] dp = new int[arrayList.size()][arrayList.size()];
-        return toGetFun(arrayList, 1, arrayList.size() - 2, dp);
+        return toGetFun(arrayList, 0, arrayList.size() - 1, dp);
     }
 
     //记忆化搜索
     private int toGetFun(ArrayList<Integer> arrayList, int i, int j, int[][] dp) {
-        if (i > j) {
+        if (i == j - 1) {
             return 0;
         }
         if (dp[i][j] != 0) {
             return dp[i][j];
         }
-        for (int cur = i; cur <= j; cur++) {
-            int left = toGetFun(arrayList, i, cur - 1, dp);
-            int right = toGetFun(arrayList, cur + 1, j, dp);
-            int curData = arrayList.get(cur) * arrayList.get(i - 1) * arrayList.get(j + 1);
+        for (int cur = i + 1; cur < j; cur++) {
+            int left = toGetFun(arrayList, i, cur, dp);
+            int right = toGetFun(arrayList, cur, j, dp);
+            int curData = arrayList.get(cur) * arrayList.get(i) * arrayList.get(j);
             dp[i][j] = Math.max(dp[i][j], left + right + curData);
         }
         return dp[i][j];

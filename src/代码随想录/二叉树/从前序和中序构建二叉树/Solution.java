@@ -25,19 +25,12 @@ public class Solution {
         if (pl > pr) {
             return null;
         }
-        int cline = 0;
-        for (int strat = il; strat <= ir; strat++) {
-            if (inorder[strat] == preorder[pl]) {
-                cline = strat;
-                break;
-            }
-        }
-        TreeNode treeNode = new TreeNode(preorder[pl]);
-        int leftSize = cline - il;
-        int rightSize = ir - cline;
-
-        treeNode.left = buildTree(inorder, inorderMap, il, cline - 1, preorder, pl + 1, pl + leftSize);
-        treeNode.right = buildTree(inorder, inorderMap, cline + 1, ir, preorder, pr - rightSize + 1, pr);
-        return treeNode;
+        TreeNode newNode = new TreeNode(preorder[pl]);
+        int curIndex = inorderMap.get(newNode.val);
+        int leftSize = curIndex - il;
+        int rightSize = ir - curIndex;
+        newNode.left = buildTree(inorder, inorderMap, il, curIndex - 1, preorder, pl + 1, pl + leftSize);
+        newNode.right = buildTree(inorder, inorderMap, curIndex + 1, ir, preorder, pr - rightSize+1, pr);
+        return newNode;
     }
 }
