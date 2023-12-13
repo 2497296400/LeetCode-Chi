@@ -21,15 +21,14 @@ public class Solution {
             p4.next=p2;
             ListNode head=p1;
             System.out.println(detectCycle(head));
-
+            
 
         }
         public static ListNode detectCycle(ListNode head) {
-            if (head == null || head.next == null||head.next.next==null) {
+            if (head == null||head.next==null||head.next.next==null)
                 return null;
-            }
-            ListNode p1 = head.next;
-            ListNode p2 = head.next.next;
+            ListNode p1 = head;
+            ListNode p2 = head;
             while (p2 != p1) {
                 if (p2.next == null || p2.next.next == null) {
                     return null;
@@ -37,7 +36,7 @@ public class Solution {
                 p1 = p1.next;
                 p2 = p2.next.next;
             }
-            p2 = head.next;
+            p2 = head;
             while (p2 != p1) {
                 p1 = p1.next;
                 p2 = p2.next;

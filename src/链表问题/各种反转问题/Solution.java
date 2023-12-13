@@ -109,7 +109,7 @@ public class Solution {
         return next;
     }
 
-    //再来一边
+    //
     private ListNode reversalNode(ListNode head) {
         if (head == null || head.next == null) {
             return null;

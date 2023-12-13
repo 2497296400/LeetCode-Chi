@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.ImsCourseStudentMapper">
+
+    <resultMap id="BaseResultMap" type="generator.domain.ImsCourseStudent">
+            <id property="imsCourseId" column="ims_course_id" jdbcType="BIGINT"/>
+            <id property="sysUserId" column="sys_user_id" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ims_course_id,sys_user_id
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from ims_course_student
+        where  ims_course_id = #{imsCourseId,jdbcType=BIGINT} AND sys_user_id = #{sysUserId,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from ims_course_student
+        where  ims_course_id = #{imsCourseId,jdbcType=BIGINT} AND sys_user_id = #{sysUserId,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert">
+        insert into ims_course_student
+        ( ims_course_id,sys_user_id)
+        values (#{imsCourseId,jdbcType=BIGINT},#{sysUserId,jdbcType=BIGINT})
+    </insert>
+    <insert id="insertSelective">
+        insert into ims_course_student
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="imsCourseId != null">ims_course_id,</if>
+                <if test="sysUserId != null">sys_user_id,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="imsCourseId != null">#{imsCourseId,jdbcType=BIGINT},</if>
+                <if test="sysUserId != null">#{sysUserId,jdbcType=BIGINT},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="generator.domain.ImsCourseStudent">
+        update ims_course_student
+        <set>
+        </set>
+        where   ims_course_id = #{imsCourseId,jdbcType=BIGINT} AND sys_user_id = #{sysUserId,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="generator.domain.ImsCourseStudent">
+        update ims_course_student
+        set 
+        where   ims_course_id = #{imsCourseId,jdbcType=BIGINT} AND sys_user_id = #{sysUserId,jdbcType=BIGINT} 
+    </update>
+</mapper>

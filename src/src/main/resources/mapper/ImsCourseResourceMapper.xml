@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.ImsCourseResourceMapper">
+
+    <resultMap id="BaseResultMap" type="generator.domain.ImsCourseResource">
+            <id property="resourceId" column="resource_id" jdbcType="BIGINT"/>
+            <result property="imsCourseId" column="ims_course_id" jdbcType="BIGINT"/>
+            <result property="resourceName" column="resource_name" jdbcType="VARCHAR"/>
+            <result property="url" column="url" jdbcType="VARCHAR"/>
+            <result property="type" column="type" jdbcType="CHAR"/>
+            <result property="filesize" column="filesize" jdbcType="VARCHAR"/>
+            <result property="videolength" column="videolength" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        resource_id,ims_course_id,resource_name,
+        url,type,filesize,
+        videolength,create_time
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from ims_course_resource
+        where  resource_id = #{resourceId,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from ims_course_resource
+        where  resource_id = #{resourceId,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="resource_id" keyProperty="resourceId" parameterType="generator.domain.ImsCourseResource" useGeneratedKeys="true">
+        insert into ims_course_resource
+        ( resource_id,ims_course_id,resource_name
+        ,url,type,filesize
+        ,videolength,create_time)
+        values (#{resourceId,jdbcType=BIGINT},#{imsCourseId,jdbcType=BIGINT},#{resourceName,jdbcType=VARCHAR}
+        ,#{url,jdbcType=VARCHAR},#{type,jdbcType=CHAR},#{filesize,jdbcType=VARCHAR}
+        ,#{videolength,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="resource_id" keyProperty="resourceId" parameterType="generator.domain.ImsCourseResource" useGeneratedKeys="true">
+        insert into ims_course_resource
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="resourceId != null">resource_id,</if>
+                <if test="imsCourseId != null">ims_course_id,</if>
+                <if test="resourceName != null">resource_name,</if>
+                <if test="url != null">url,</if>
+                <if test="type != null">type,</if>
+                <if test="filesize != null">filesize,</if>
+                <if test="videolength != null">videolength,</if>
+                <if test="createTime != null">create_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="resourceId != null">#{resourceId,jdbcType=BIGINT},</if>
+                <if test="imsCourseId != null">#{imsCourseId,jdbcType=BIGINT},</if>
+                <if test="resourceName != null">#{resourceName,jdbcType=VARCHAR},</if>
+                <if test="url != null">#{url,jdbcType=VARCHAR},</if>
+                <if test="type != null">#{type,jdbcType=CHAR},</if>
+                <if test="filesize != null">#{filesize,jdbcType=VARCHAR},</if>
+                <if test="videolength != null">#{videolength,jdbcType=VARCHAR},</if>
+                <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="generator.domain.ImsCourseResource">
+        update ims_course_resource
+        <set>
+                <if test="imsCourseId != null">
+                    ims_course_id = #{imsCourseId,jdbcType=BIGINT},
+                </if>
+                <if test="resourceName != null">
+                    resource_name = #{resourceName,jdbcType=VARCHAR},
+                </if>
+                <if test="url != null">
+                    url = #{url,jdbcType=VARCHAR},
+                </if>
+                <if test="type != null">
+                    type = #{type,jdbcType=CHAR},
+                </if>
+                <if test="filesize != null">
+                    filesize = #{filesize,jdbcType=VARCHAR},
+                </if>
+                <if test="videolength != null">
+                    videolength = #{videolength,jdbcType=VARCHAR},
+                </if>
+                <if test="createTime != null">
+                    create_time = #{createTime,jdbcType=TIMESTAMP},
+                </if>
+        </set>
+        where   resource_id = #{resourceId,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="generator.domain.ImsCourseResource">
+        update ims_course_resource
+        set 
+            ims_course_id =  #{imsCourseId,jdbcType=BIGINT},
+            resource_name =  #{resourceName,jdbcType=VARCHAR},
+            url =  #{url,jdbcType=VARCHAR},
+            type =  #{type,jdbcType=CHAR},
+            filesize =  #{filesize,jdbcType=VARCHAR},
+            videolength =  #{videolength,jdbcType=VARCHAR},
+            create_time =  #{createTime,jdbcType=TIMESTAMP}
+        where   resource_id = #{resourceId,jdbcType=BIGINT} 
+    </update>
+</mapper>

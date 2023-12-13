@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.ImsHomeworkMapper">
+
+    <resultMap id="BaseResultMap" type="generator.domain.ImsHomework">
+            <id property="homeworkId" column="homework_id" jdbcType="BIGINT"/>
+            <result property="imsCourseId" column="ims_course_id" jdbcType="BIGINT"/>
+            <result property="homeworkName" column="homework_name" jdbcType="VARCHAR"/>
+            <result property="homeworkType" column="homework_type" jdbcType="CHAR"/>
+            <result property="homeworkScope" column="homework_scope" jdbcType="CHAR"/>
+            <result property="reviewedTeacher" column="Reviewed_teacher" jdbcType="VARCHAR"/>
+            <result property="submitTime" column="submit_time" jdbcType="TIMESTAMP"/>
+            <result property="correctDeadline" column="correct_deadline" jdbcType="TIMESTAMP"/>
+            <result property="description" column="description" jdbcType="VARCHAR"/>
+            <result property="annexUrl" column="annex_url" jdbcType="VARCHAR"/>
+            <result property="filesize" column="filesize" jdbcType="VARCHAR"/>
+            <result property="scoreSystem" column="score_system" jdbcType="VARCHAR"/>
+            <result property="state" column="state" jdbcType="CHAR"/>
+            <result property="delFlag" column="del_flag" jdbcType="CHAR"/>
+            <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        homework_id,ims_course_id,homework_name,
+        homework_type,homework_scope,Reviewed_teacher,
+        submit_time,correct_deadline,description,
+        annex_url,filesize,score_system,
+        state,del_flag,create_by,
+        create_time,update_by,update_time,
+        remark
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from ims_homework
+        where  homework_id = #{homeworkId,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from ims_homework
+        where  homework_id = #{homeworkId,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="homework_id" keyProperty="homeworkId" parameterType="generator.domain.ImsHomework" useGeneratedKeys="true">
+        insert into ims_homework
+        ( homework_id,ims_course_id,homework_name
+        ,homework_type,homework_scope,Reviewed_teacher
+        ,submit_time,correct_deadline,description
+        ,annex_url,filesize,score_system
+        ,state,del_flag,create_by
+        ,create_time,update_by,update_time
+        ,remark)
+        values (#{homeworkId,jdbcType=BIGINT},#{imsCourseId,jdbcType=BIGINT},#{homeworkName,jdbcType=VARCHAR}
+        ,#{homeworkType,jdbcType=CHAR},#{homeworkScope,jdbcType=CHAR},#{reviewedTeacher,jdbcType=VARCHAR}
+        ,#{submitTime,jdbcType=TIMESTAMP},#{correctDeadline,jdbcType=TIMESTAMP},#{description,jdbcType=VARCHAR}
+        ,#{annexUrl,jdbcType=VARCHAR},#{filesize,jdbcType=VARCHAR},#{scoreSystem,jdbcType=VARCHAR}
+        ,#{state,jdbcType=CHAR},#{delFlag,jdbcType=CHAR},#{createBy,jdbcType=VARCHAR}
+        ,#{createTime,jdbcType=TIMESTAMP},#{updateBy,jdbcType=VARCHAR},#{updateTime,jdbcType=TIMESTAMP}
+        ,#{remark,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="homework_id" keyProperty="homeworkId" parameterType="generator.domain.ImsHomework" useGeneratedKeys="true">
+        insert into ims_homework
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="homeworkId != null">homework_id,</if>
+                <if test="imsCourseId != null">ims_course_id,</if>
+                <if test="homeworkName != null">homework_name,</if>
+                <if test="homeworkType != null">homework_type,</if>
+                <if test="homeworkScope != null">homework_scope,</if>
+                <if test="reviewedTeacher != null">Reviewed_teacher,</if>
+                <if test="submitTime != null">submit_time,</if>
+                <if test="correctDeadline != null">correct_deadline,</if>
+                <if test="description != null">description,</if>
+                <if test="annexUrl != null">annex_url,</if>
+                <if test="filesize != null">filesize,</if>
+                <if test="scoreSystem != null">score_system,</if>
+                <if test="state != null">state,</if>
+                <if test="delFlag != null">del_flag,</if>
+                <if test="createBy != null">create_by,</if>
+                <if test="createTime != null">create_time,</if>
+                <if test="updateBy != null">update_by,</if>
+                <if test="updateTime != null">update_time,</if>
+                <if test="remark != null">remark,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="homeworkId != null">#{homeworkId,jdbcType=BIGINT},</if>
+                <if test="imsCourseId != null">#{imsCourseId,jdbcType=BIGINT},</if>
+                <if test="homeworkName != null">#{homeworkName,jdbcType=VARCHAR},</if>
+                <if test="homeworkType != null">#{homeworkType,jdbcType=CHAR},</if>
+                <if test="homeworkScope != null">#{homeworkScope,jdbcType=CHAR},</if>
+                <if test="reviewedTeacher != null">#{reviewedTeacher,jdbcType=VARCHAR},</if>
+                <if test="submitTime != null">#{submitTime,jdbcType=TIMESTAMP},</if>
+                <if test="correctDeadline != null">#{correctDeadline,jdbcType=TIMESTAMP},</if>
+                <if test="description != null">#{description,jdbcType=VARCHAR},</if>
+                <if test="annexUrl != null">#{annexUrl,jdbcType=VARCHAR},</if>
+                <if test="filesize != null">#{filesize,jdbcType=VARCHAR},</if>
+                <if test="scoreSystem != null">#{scoreSystem,jdbcType=VARCHAR},</if>
+                <if test="state != null">#{state,jdbcType=CHAR},</if>
+                <if test="delFlag != null">#{delFlag,jdbcType=CHAR},</if>
+                <if test="createBy != null">#{createBy,jdbcType=VARCHAR},</if>
+                <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+                <if test="updateBy != null">#{updateBy,jdbcType=VARCHAR},</if>
+                <if test="updateTime != null">#{updateTime,jdbcType=TIMESTAMP},</if>
+                <if test="remark != null">#{remark,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="generator.domain.ImsHomework">
+        update ims_homework
+        <set>
+                <if test="imsCourseId != null">
+                    ims_course_id = #{imsCourseId,jdbcType=BIGINT},
+                </if>
+                <if test="homeworkName != null">
+                    homework_name = #{homeworkName,jdbcType=VARCHAR},
+                </if>
+                <if test="homeworkType != null">
+                    homework_type = #{homeworkType,jdbcType=CHAR},
+                </if>
+                <if test="homeworkScope != null">
+                    homework_scope = #{homeworkScope,jdbcType=CHAR},
+                </if>
+                <if test="reviewedTeacher != null">
+                    Reviewed_teacher = #{reviewedTeacher,jdbcType=VARCHAR},
+                </if>
+                <if test="submitTime != null">
+                    submit_time = #{submitTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="correctDeadline != null">
+                    correct_deadline = #{correctDeadline,jdbcType=TIMESTAMP},
+                </if>
+                <if test="description != null">
+                    description = #{description,jdbcType=VARCHAR},
+                </if>
+                <if test="annexUrl != null">
+                    annex_url = #{annexUrl,jdbcType=VARCHAR},
+                </if>
+                <if test="filesize != null">
+                    filesize = #{filesize,jdbcType=VARCHAR},
+                </if>
+                <if test="scoreSystem != null">
+                    score_system = #{scoreSystem,jdbcType=VARCHAR},
+                </if>
+                <if test="state != null">
+                    state = #{state,jdbcType=CHAR},
+                </if>
+                <if test="delFlag != null">
+                    del_flag = #{delFlag,jdbcType=CHAR},
+                </if>
+                <if test="createBy != null">
+                    create_by = #{createBy,jdbcType=VARCHAR},
+                </if>
+                <if test="createTime != null">
+                    create_time = #{createTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updateBy != null">
+                    update_by = #{updateBy,jdbcType=VARCHAR},
+                </if>
+                <if test="updateTime != null">
+                    update_time = #{updateTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="remark != null">
+                    remark = #{remark,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   homework_id = #{homeworkId,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="generator.domain.ImsHomework">
+        update ims_homework
+        set 
+            ims_course_id =  #{imsCourseId,jdbcType=BIGINT},
+            homework_name =  #{homeworkName,jdbcType=VARCHAR},
+            homework_type =  #{homeworkType,jdbcType=CHAR},
+            homework_scope =  #{homeworkScope,jdbcType=CHAR},
+            Reviewed_teacher =  #{reviewedTeacher,jdbcType=VARCHAR},
+            submit_time =  #{submitTime,jdbcType=TIMESTAMP},
+            correct_deadline =  #{correctDeadline,jdbcType=TIMESTAMP},
+            description =  #{description,jdbcType=VARCHAR},
+            annex_url =  #{annexUrl,jdbcType=VARCHAR},
+            filesize =  #{filesize,jdbcType=VARCHAR},
+            score_system =  #{scoreSystem,jdbcType=VARCHAR},
+            state =  #{state,jdbcType=CHAR},
+            del_flag =  #{delFlag,jdbcType=CHAR},
+            create_by =  #{createBy,jdbcType=VARCHAR},
+            create_time =  #{createTime,jdbcType=TIMESTAMP},
+            update_by =  #{updateBy,jdbcType=VARCHAR},
+            update_time =  #{updateTime,jdbcType=TIMESTAMP},
+            remark =  #{remark,jdbcType=VARCHAR}
+        where   homework_id = #{homeworkId,jdbcType=BIGINT} 
+    </update>
+</mapper>

@@ -8,10 +8,13 @@ public class Solution {
 
     public int maxProfit(int[] prices) {
         Integer[][] dp = new Integer[prices.length][2];
-        return fun(prices, 0, false, dp);
+        return fun(prices, 0, false, dp, 2);
     }
 
-    private int fun(int[] prices, int index, boolean hold, Integer[][] dp) {
+    private int fun(int[] prices, int index, boolean hold, Integer[][] dp, int i) {
+        if (i == 0) {
+            return 0;
+        }
         if (index == prices.length) {
             return 0;
         }
@@ -20,12 +23,12 @@ public class Solution {
             return dp[index][status];
         }
         int a, b = 0, c = 0;
-        a = fun(prices, index + 1, hold, dp);
+        a = fun(prices, index + 1, hold, dp, i);
         if (hold) {
-            b = fun(prices, index + 1, false, dp) + prices[index];
+            b = fun(prices, index + 1, false, dp, i-1) + prices[index];
         }
         if (!hold) {
-            c = fun(prices, index + 1, true, dp) - prices[index];
+            c = fun(prices, index + 1, true, dp, i-1) - prices[index];
         }
         return dp[index][status] = Math.max(a, Math.max(b, c));
     }

@@ -9,6 +9,5 @@ public class Dome {
         l2.val=2;
         l2.next=new ListNode(3);
         Solution s=new Solution();
-        System.out.println(s.mergeTwoLists(l1,l2));
     }
 }

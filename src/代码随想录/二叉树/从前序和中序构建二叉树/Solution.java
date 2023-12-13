@@ -30,7 +30,7 @@ public class Solution {
         int leftSize = curIndex - il;
         int rightSize = ir - curIndex;
         newNode.left = buildTree(inorder, inorderMap, il, curIndex - 1, preorder, pl + 1, pl + leftSize);
-        newNode.right = buildTree(inorder, inorderMap, curIndex + 1, ir, preorder, pr - rightSize+1, pr);
+        newNode.right = buildTree(inorder, inorderMap, curIndex + 1, ir, preorder, pl + leftSize + 1, pr);
         return newNode;
     }
 }

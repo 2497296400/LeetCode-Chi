@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.ImsDeptAreaMapper">
+
+    <resultMap id="BaseResultMap" type="generator.domain.ImsDeptArea">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="areaName" column="area_name" jdbcType="VARCHAR"/>
+            <result property="deptIdList" column="dept_id_list" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,area_name,dept_id_list
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from ims_dept_area
+        where  id = #{id,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from ims_dept_area
+        where  id = #{id,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="generator.domain.ImsDeptArea" useGeneratedKeys="true">
+        insert into ims_dept_area
+        ( id,area_name,dept_id_list
+        )
+        values (#{id,jdbcType=BIGINT},#{areaName,jdbcType=VARCHAR},#{deptIdList,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="generator.domain.ImsDeptArea" useGeneratedKeys="true">
+        insert into ims_dept_area
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="areaName != null">area_name,</if>
+                <if test="deptIdList != null">dept_id_list,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=BIGINT},</if>
+                <if test="areaName != null">#{areaName,jdbcType=VARCHAR},</if>
+                <if test="deptIdList != null">#{deptIdList,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="generator.domain.ImsDeptArea">
+        update ims_dept_area
+        <set>
+                <if test="areaName != null">
+                    area_name = #{areaName,jdbcType=VARCHAR},
+                </if>
+                <if test="deptIdList != null">
+                    dept_id_list = #{deptIdList,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="generator.domain.ImsDeptArea">
+        update ims_dept_area
+        set 
+            area_name =  #{areaName,jdbcType=VARCHAR},
+            dept_id_list =  #{deptIdList,jdbcType=VARCHAR}
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+</mapper>

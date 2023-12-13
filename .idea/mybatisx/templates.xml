@@ -49,20 +49,8 @@
             <option name="tableUIInfoList">
               <list>
                 <TableUIInfo>
-                  <option name="className" value="SopPostStandard" />
-                  <option name="tableName" value="sop_post_standard" />
-                </TableUIInfo>
-                <TableUIInfo>
-                  <option name="className" value="SopPostStandardInfo" />
-                  <option name="tableName" value="sop_post_standard_info" />
-                </TableUIInfo>
-                <TableUIInfo>
-                  <option name="className" value="SopProjectTemplate" />
-                  <option name="tableName" value="sop_project_template" />
-                </TableUIInfo>
-                <TableUIInfo>
-                  <option name="className" value="SopProjectTemplateAbility" />
-                  <option name="tableName" value="sop_project_template_ability" />
+                  <option name="className" value="ImsHomework" />
+                  <option name="tableName" value="ims_homework" />
                 </TableUIInfo>
               </list>
             </option>

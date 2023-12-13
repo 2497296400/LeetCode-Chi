@@ -14,7 +14,6 @@ public class Solution {
         TreeNode head = new TreeNode();
         List<TreeNode> aLl = getALl(1, n);
         System.out.println(aLl.size());
-        
     }
 
     static List<TreeNode> list;
