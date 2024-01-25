@@ -5,7 +5,8 @@ public class IndexTreeMax {
         IndexTreeMax indexTreeMax = new IndexTreeMax(10);
         indexTreeMax.update(1, 1000);
         indexTreeMax.update(2, 800);
-        indexTreeMax.update(3, 500);
+        indexTreeMax.update(3, 8800);
+        indexTreeMax.update(3, 1000);
         indexTreeMax.update(5, 2000);
         System.out.println(indexTreeMax.query(2, 5));
     }

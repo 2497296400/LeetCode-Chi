@@ -21,3 +21,8 @@ b
 .src/基础数据结构/AC自动机/TestAC.java,0\4\0449eb304ea2e293391cdda64b93cfc46915bed6
 p
 @src/灵神总结周赛/图论/树上最大得分和路径/t.java,7\3\73f306431c24e84e7aa454c9356b737ac953173c
+C
+hs_err_pid12520.log,1\1\1108d4974fb33d5188ccabe9d62fa4774608a0c2
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302

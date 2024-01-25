@@ -10,14 +10,5 @@
         <module name="leetcode" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="itheima_spring" target="1.8" />
-      <module name="src" target="1.5" />
-    </bytecodeTargetLevel>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="力扣" options="--add-exports jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED" />
-    </option>
   </component>
 </project>

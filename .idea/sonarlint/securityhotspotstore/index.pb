@@ -21,3 +21,8 @@ b
 2src/基础数据结构/AC自动机/Code03_AC1.java,8\c\8c16758e55839daa6afb4f1d321d3bf4efeaa0d6
 ^
 .src/基础数据结构/AC自动机/TestAC.java,0\4\0449eb304ea2e293391cdda64b93cfc46915bed6
+C
+hs_err_pid12520.log,1\1\1108d4974fb33d5188ccabe9d62fa4774608a0c2
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
