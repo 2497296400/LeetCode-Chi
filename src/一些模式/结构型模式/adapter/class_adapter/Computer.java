@@ -13,6 +13,7 @@ public class Computer {
         if(sdCard == null) {
             throw  new NullPointerException("sd card is not null");
         }
+        // 这里是适配器模式的核心代码
         return sdCard.readSD();
     }
 }

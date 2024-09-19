@@ -4,7 +4,6 @@ public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
         ListNode l1 = new ListNode(1);
-
         ListNode l2 = new ListNode(2);
         ListNode l3 = new ListNode(3);
         ListNode l4 = new ListNode(4);

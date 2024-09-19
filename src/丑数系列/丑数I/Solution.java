@@ -1,12 +1,10 @@
 package 丑数系列.丑数I;
 
-import org.junit.runner.notification.RunListener;
 
-@RunListener.ThreadSafe
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        
+        System.out.println("123132");
         System.out.println(solution.isUgly(8));
     }
 
