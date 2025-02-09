@@ -1,4 +1,4 @@
-package 树.红黑树;
+package 基础数据结构.树.红黑树;
 
 import java.util.Scanner;
 
